@@ -1,0 +1,232 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayjichang.github.io/news/article-86990.htm" />
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Android基础——动态加载so库</title>
+        <meta name="description" content="原因：如果把so文件直接放在libs目录下，在android程序启动的时候会默认加载libs目录下的所有so库，但这些so库可能会在某些地方存在冲突，使用动态加载so库，就可以通过一些条件判断是否要加" />
+        <link rel="icon" href="/assets/website/img/surfboardnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray免费机场 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayjichang.github.io/news/article-86990.htm" />
+    <meta property="og:site_name" content="V2ray免费机场 节点订阅中文官网" />
+    <meta property="og:title" content="Android基础——动态加载so库" />
+    <meta property="og:image" content="https://v2rayjichang.github.io/uploads/20240709-1/96153a512a9733d15753a0bb3e328580.webp" />
+        <meta property="og:release_date" content="2025-04-02T07:45:38" />
+    <meta property="og:updated_time" content="2025-04-02T07:45:38" />
+        <meta property="og:description" content="原因：如果把so文件直接放在libs目录下，在android程序启动的时候会默认加载libs目录下的所有so库，但这些so库可能会在某些地方存在冲突，使用动态加载so库，就可以通过一些条件判断是否要加" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Android基础——动态加载so库">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/bootstrap.min.css">
+    <!--====== Slick css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/slick.css">
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/magnific-popup.css">
+    <!--====== Line Icons css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/LineIcons.css">
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/default.css">
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMZ4WN7LCM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LMZ4WN7LCM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--====== HEADER ONE PART START ======-->
+    <header class="header-area">
+        <div class="navbar-area navbar-one navbar-transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/">
+                                        <span>
+                        V2ray免费机场                    </span>
+                                        </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarOne">
+                        <ul class="navbar-nav m-auto">
+                                                        <li class="nav-item">
+                                <a href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/client.htm">客户端</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </nav> <!-- navbar -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div>
+        <div id="home" class="header-content-area d-flex align-items-center list" style="height:450px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-wrapper">
+                            <div class="header-content">
+                                <h1 class="header-title">Android基础——动态加载so库</h1>
+                                <p class="text nav">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- header content -->
+                            <div class="header-image d-none d-lg-block">
+                                <div class="image">
+                                    <img src="/assets/website/img/surfboardnode/header.png" alt="Header">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="header-shape">
+                <img src="/assets/website/img/surfboardnode/header-shape.svg" alt="shape">
+            </div> <!-- header-shape -->
+        </div> <!-- header content area -->
+    </header>
+    <!--====== HEADER ONE PART ENDS ======-->
+    <!--====== ABOUT THREE PART START ======-->
+    <section id="about" class="about-area pt-70 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p>原因：如果把so文件直接放在libs目录下，在android程序启动的时候会默认加载libs目录下的所有so库，但这些so库可能会在某些地方存在冲突，使用动态加载so库，就可以通过一些条件判断是否要加载这个so库。<br /> 介绍：so的动态加载是把so库打包成apk的时候剔除，在合适的时候通过网络包下载的方式，在运行的时候进行分离加载。<br /> 优点：so文件是动态加载的，不是绑定死的，更便于修改，在so库有问题的时候可以动态更新；<br /> so库文件动态加载可以极大地减小apk包的体积；<br /> 解决多个第三方库文件同时加载可能出现冲突的问题。</p> <h2> <a id="Androidso_6" rel="nofollow"></a>一、Android的so库文件的加载</h2> <ol> <li>Android中加载so：<br /> （1）调用load()方法，传递so文件的绝对路径；<br /> （2）调用loadLibrary()方法，传递so文件的名称，而且so文件必须放在apk的lib目录下，而且so的名称必须去掉前面的lib和后边的“.so”。<br /> 只能加载两个目录下的so文件：<br /> （1）/system/lib<br /> （2）应用程序安装包的路径：/data/data/packgename/…<br /> 对于两种加载so文件的方法，在Android源码System.java中可以看到<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://cs.android.com/android/platform/superproject/+/master:libcore/ojluni/src/main/java/java/lang/System.java;l=1?q=system.java&amp;sq=&amp;ss=android/platform/superproject"  rel="nofollow">源码链接</a> </li> </ol> <pre><code class="prism language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">load</span><span class="token punctuation">(</span><span class="token class-name">String</span> filename<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token class-name">Runtime</span><span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">load0</span><span class="token punctuation">(</span><span class="token class-name">Reflection</span><span class="token punctuation">.</span><span class="token function">getCallerClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> filename<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> </code></pre> <pre><code class="prism language-java">        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">loadLibrary</span><span class="token punctuation">(</span><span class="token class-name">String</span> libname<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token class-name">Runtime</span><span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">loadLibrary0</span><span class="token punctuation">(</span><span class="token class-name">Reflection</span><span class="token punctuation">.</span><span class="token function">getCallerClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> libname<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> </code></pre> <ol start="2"> <li>上边两种方法都调用了Runtime中的getRuntime函数，用来获取Runtime的实例<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://cs.android.com/android/platform/superproject/+/master:libcore/ojluni/src/main/java/java/lang/Runtime.java?q=Runtime.java&amp;ss=android/platform/superproject"  rel="nofollow">源码链接</a> </li> </ol> <pre><code class="prism language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Runtime</span> <span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">return</span> currentRuntime<span class="token punctuation">;</span>     <span class="token punctuation">}</span> </code></pre> <ol start="3"> <li>在加载so时也调用了loadLibrary0方法<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://cs.android.com/android/platform/superproject/+/master:libcore/ojluni/src/main/java/java/lang/Runtime.java;bpv=0;bpt=1"  rel="nofollow">源码链接</a><br /> 在loadLibrary0中可以看到根据ClassLoader是否为空，有两种不同的处理形式。</li> </ol> <pre><code class="prism language-java">    <span class="token keyword">private</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">loadLibrary0</span><span class="token punctuation">(</span><span class="token class-name">ClassLoader</span> loader<span class="token punctuation">,</span> <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span> callerClass<span class="token punctuation">,</span> <span class="token class-name">String</span> libname<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">if</span> <span class="token punctuation">(</span>libname<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token class-name">File</span><span class="token punctuation">.</span>separatorChar<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UnsatisfiedLinkError</span><span class="token punctuation">(</span>     <span class="token string">"Directory separator should not appear in library name: "</span> <span class="token operator">+</span> libname<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token class-name">String</span> libraryName <span class="token operator">=</span> libname<span class="token punctuation">;</span>         <span class="token comment">//ClassLoader不为空时（程序中通过System.loadlibrary()方式，这个loader就不会为空）</span>         <span class="token keyword">if</span> <span class="token punctuation">(</span>loader <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token punctuation">(</span>loader <span class="token keyword">instanceof</span> <span class="token class-name">BootClassLoader</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token comment">//通过ClassLoader的findLibrary方法查找so的文件名称，寻找so文件是否存在</span>             <span class="token class-name">String</span> filename <span class="token operator">=</span> loader<span class="token punctuation">.</span><span class="token function">findLibrary</span><span class="token punctuation">(</span>libraryName<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">//判断，如果未找到so文件，并且类加载器存在</span>             <span class="token keyword">if</span> <span class="token punctuation">(</span>filename <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span>                     <span class="token punctuation">(</span>loader<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token class-name">PathClassLoader</span><span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token operator">||</span>                      loader<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token class-name">DelegateLastClassLoader</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 filename <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">mapLibraryName</span><span class="token punctuation">(</span>libraryName<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//拼接so文件名</span>             <span class="token punctuation">}</span>             <span class="token keyword">if</span> <span class="token punctuation">(</span>filename <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UnsatisfiedLinkError</span><span class="token punctuation">(</span>loader <span class="token operator">+</span> <span class="token string">" couldn't find \""</span> <span class="token operator">+</span>                                                <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">mapLibraryName</span><span class="token punctuation">(</span>libraryName<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>             <span class="token comment">//so文件存在，加载它</span>             <span class="token class-name">String</span> error <span class="token operator">=</span> <span class="token function">nativeLoad</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> loader<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token keyword">if</span> <span class="token punctuation">(</span>error <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             <span class="token comment">//加载异常，加载失败</span>                 <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UnsatisfiedLinkError</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>             <span class="token keyword">return</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token comment">//ClassLoader为空时，传入library name和System.mapLibraryName获得真正的library name。</span>         <span class="token comment">//具体深入的实现过程，可以到Android源码继续查看getLibPaths()和mapLibraryName的实现</span>         <span class="token function">getLibPaths</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token class-name">String</span> filename <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">mapLibraryName</span><span class="token punctuation">(</span>libraryName<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//mapLibraryName用于拼接so文件名的前缀:lib和后缀.so</span>         <span class="token comment">//例如传入的是wudong，得到的就会是libwudong.so,然后在mLibPaths查找'libwudong.so'，最终确定library的path。</span>         <span class="token class-name">String</span> error <span class="token operator">=</span> <span class="token function">nativeLoad</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> loader<span class="token punctuation">,</span> callerClass<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">if</span> <span class="token punctuation">(</span>error <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span><span class="token comment">//加载异常</span>             <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UnsatisfiedLinkError</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>     <span class="token punctuation">}</span> </code></pre> <ol start="4"> <li>在查找so文件的过程中，调用了loader.findLibrary的方法去寻找so文件，如果可以找到，会返回so文件的绝对路径，然后交由nativeLoad()去加载。</li> </ol> <h2> <a id="so_77" rel="nofollow"></a>二、实现so的动态加载</h2> <p>1.首先把so库放在assets资源目录下，一般会放两个so库，一个32位一个64位的；<br /> 2.动态加载，就是在需要使用的时候，从assets资源目录下复制到app/libs目录下；<br /> 3.通过 System.load(String filename) 或者 System.loadLibrary(String libname) 方法去加载 so。<br /> ·在so原本的加载过程中，是系统通过ClassLoader检索native目录里是否存在so库进行加载的，那就需要把下载存放so的路径添加到ClassLoader的libs路径里，这些libs路径在app启动的时候就已经生成了，那就需要利用反射，在运行时把路径添加进去。</p> <h5> <a id="soClassLoader_82" rel="nofollow"></a>将存放so的路径放到ClassLoader中</h5> <p>利用反射将存放so的路径放到ClassLoader中，<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/Tencent/tinker/blob/dev/tinker-android/tinker-android-lib/src/main/java/com/tencent/tinker/lib/library/TinkerLoadLibrary.java"  rel="nofollow">开源项目tinker</a>的TinkerLoadLibrary也有实现发方法，我们就不用自己实现了，可以拿过来直接使用。</p> <pre><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">class</span> V25 <span class="token punctuation">{<!-- --></span>         <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">install</span><span class="token punctuation">(</span><span class="token class-name">ClassLoader</span> classLoader<span class="token punctuation">,</span> <span class="token class-name">File</span> folder<span class="token punctuation">)</span>  <span class="token keyword">throws</span> <span class="token class-name">Throwable</span> <span class="token punctuation">{<!-- --></span>             <span class="token keyword">final</span> <span class="token class-name">Field</span> pathListField <span class="token operator">=</span> <span class="token class-name">ShareReflectUtil</span><span class="token punctuation">.</span><span class="token function">findField</span><span class="token punctuation">(</span>classLoader<span class="token punctuation">,</span> <span class="token string">"pathList"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token keyword">final</span> <span class="token class-name">Object</span> dexPathList <span class="token operator">=</span> pathListField<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>classLoader<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token keyword">final</span> <span class="token class-name">Field</span> nativeLibraryDirectories <span class="token operator">=</span> <span class="token class-name">ShareReflectUtil</span><span class="token punctuation">.</span><span class="token function">findField</span><span class="token punctuation">(</span>dexPathList<span class="token punctuation">,</span> <span class="token string">"nativeLibraryDirectories"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">File</span><span class="token punctuation">&gt;</span></span> origLibDirs <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">File</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">)</span> nativeLibraryDirectories<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>dexPathList<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token keyword">if</span> <span class="token punctuation">(</span>origLibDirs <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 origLibDirs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>             <span class="token keyword">final</span> <span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">File</span><span class="token punctuation">&gt;</span></span> libDirIt <span class="token operator">=</span> origLibDirs<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token keyword">while</span> <span class="token punctuation">(</span>libDirIt<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 <span class="token keyword">final</span> <span class="token class-name">File</span> libDir <span class="token operator">=</span> libDirIt<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token keyword">if</span> <span class="token punctuation">(</span>folder<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>libDir<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                     libDirIt<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token keyword">break</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span>             <span class="token punctuation">}</span>             origLibDirs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> folder<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token keyword">final</span> <span class="token class-name">Field</span> systemNativeLibraryDirectories <span class="token operator">=</span> <span class="token class-name">ShareReflectUtil</span><span class="token punctuation">.</span><span class="token function">findField</span><span class="token punctuation">(</span>dexPathList<span class="token punctuation">,</span> <span class="token string">"systemNativeLibraryDirectories"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">File</span><span class="token punctuation">&gt;</span></span> origSystemLibDirs <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">File</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">)</span> systemNativeLibraryDirectories<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>dexPathList<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token keyword">if</span> <span class="token punctuation">(</span>origSystemLibDirs <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 origSystemLibDirs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>              <span class="token keyword">final</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">File</span><span class="token punctuation">&gt;</span></span> newLibDirs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>origLibDirs<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> origSystemLibDirs<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             newLibDirs<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>origLibDirs<span class="token punctuation">)</span><span class="token punctuation">;</span>             newLibDirs<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>origSystemLibDirs<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token keyword">final</span> <span class="token class-name">Method</span> makeElements <span class="token operator">=</span> <span class="token class-name">ShareReflectUtil</span><span class="token punctuation">.</span><span class="token function">findMethod</span><span class="token punctuation">(</span>dexPathList<span class="token punctuation">,</span> <span class="token string">"makePathElements"</span><span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token keyword">final</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> elements <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> makeElements<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>dexPathList<span class="token punctuation">,</span> newLibDirs<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token keyword">final</span> <span class="token class-name">Field</span> nativeLibraryPathElements <span class="token operator">=</span> <span class="token class-name">ShareReflectUtil</span><span class="token punctuation">.</span><span class="token function">findField</span><span class="token punctuation">(</span>dexPathList<span class="token punctuation">,</span> <span class="token string">"nativeLibraryPathElements"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             nativeLibraryPathElements<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>dexPathList<span class="token punctuation">,</span> elements<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>这样路径就可以添加进ClassLoader的nativeLibraryDirectories中了。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-86278.htm">宠物医院美团好评200字怎么写 宠物医院美团好评200字怎么写的</a></p>
+                                        <p>下一个：<a href="/news/article-86992.htm">附近领养宠物小狗电话多少（附近的宠物领养）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-clash-v2ray-ss-ssr.htm" title="V2ray免费VPN机场 | 4月2日19.1M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点地址分享">V2ray免费VPN机场 | 4月2日19.1M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-86278.htm" title="宠物医院美团好评200字怎么写 宠物医院美团好评200字怎么写的">宠物医院美团好评200字怎么写 宠物医院美团好评200字怎么写的</a></li>
+                        <li class="py-2"><a href="/news/article-84856.htm" title="全国宠物领养平台可信吗现在（全国宠物领养中心官网）">全国宠物领养平台可信吗现在（全国宠物领养中心官网）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-28-free-subscribe-node.htm" title="V2ray免费机场 | 3月28日23M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享">V2ray免费机场 | 3月28日23M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-86276.htm" title="解决python针对hdfs上传和下载问题">解决python针对hdfs上传和下载问题</a></li>
+                        <li class="py-2"><a href="/news/article-85568.htm" title="pycharm中新增less">pycharm中新增less</a></li>
+                        <li class="py-2"><a href="/news/article-82859.htm" title="宠物食品工厂需要办理哪些证件（宠物食品工厂需要办理哪些证件和手续）">宠物食品工厂需要办理哪些证件（宠物食品工厂需要办理哪些证件和手续）</a></li>
+                        <li class="py-2"><a href="/news/article-86992.htm" title="附近领养宠物小狗电话多少（附近的宠物领养）">附近领养宠物小狗电话多少（附近的宠物领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-31-free-v2ray-subscribe.htm" title="V2ray免费VPN机场 | 3月31日18M/S|免费V2ray/Clash/SSR/Shadowrocket订阅节点地址分享">V2ray免费VPN机场 | 3月31日18M/S|免费V2ray/Clash/SSR/Shadowrocket订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-27-clash-v2ray-ss-ssr.htm" title="免费VPN翻墙推荐 | 3月27日21.7M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享">免费VPN翻墙推荐 | 3月27日21.7M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- container -->
+    </section>
+    <!--====== ABOUT THREE PART ENDS ======-->
+        <!--====== FOOTER PART START ======-->
+    <footer id="footer" class="footer-area">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p class="text">V2ray免费机场 节点订阅中文官网 版权所有 Powered by WordPress</p>
+                        </div> <!-- copyright -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer copyright -->
+    </footer>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== jquery js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/jquery-1.12.4.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/popper.min.js"></script>
+    <!--====== Images Loaded js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/imagesloaded.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/scrolling-nav.js"></script>
+    <!--====== Slick js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/slick.min.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
