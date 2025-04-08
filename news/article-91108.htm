@@ -1,0 +1,234 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayjichang.github.io/news/article-91108.htm" />
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Java线程池深入浅出</title>
+        <meta name="description" content="Java线程池深入浅出  ThreadPoolExecutor使用 前言 一、技术介绍   1.线程池是什么？   二、使用步骤   1.ThreadPoolExecutor参数介绍 2.newSin" />
+        <link rel="icon" href="/assets/website/img/surfboardnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray免费机场 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayjichang.github.io/news/article-91108.htm" />
+    <meta property="og:site_name" content="V2ray免费机场 节点订阅中文官网" />
+    <meta property="og:title" content="Java线程池深入浅出" />
+    <meta property="og:image" content="https://v2rayjichang.github.io/uploads/20240709-1/8a859b71ec9caf61880724f329357095.webp" />
+        <meta property="og:release_date" content="2025-04-08T09:54:09" />
+    <meta property="og:updated_time" content="2025-04-08T09:54:09" />
+        <meta property="og:description" content="Java线程池深入浅出  ThreadPoolExecutor使用 前言 一、技术介绍   1.线程池是什么？   二、使用步骤   1.ThreadPoolExecutor参数介绍 2.newSin" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java线程池深入浅出">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/bootstrap.min.css">
+    <!--====== Slick css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/slick.css">
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/magnific-popup.css">
+    <!--====== Line Icons css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/LineIcons.css">
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/default.css">
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMZ4WN7LCM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LMZ4WN7LCM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--====== HEADER ONE PART START ======-->
+    <header class="header-area">
+        <div class="navbar-area navbar-one navbar-transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/">
+                                        <span>
+                        V2ray免费机场                    </span>
+                                        </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarOne">
+                        <ul class="navbar-nav m-auto">
+                                                        <li class="nav-item">
+                                <a href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/client.htm">客户端</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </nav> <!-- navbar -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div>
+        <div id="home" class="header-content-area d-flex align-items-center list" style="height:450px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-wrapper">
+                            <div class="header-content">
+                                <h1 class="header-title">Java线程池深入浅出</h1>
+                                <p class="text nav">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- header content -->
+                            <div class="header-image d-none d-lg-block">
+                                <div class="image">
+                                    <img src="/assets/website/img/surfboardnode/header.png" alt="Header">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="header-shape">
+                <img src="/assets/website/img/surfboardnode/header-shape.svg" alt="shape">
+            </div> <!-- header-shape -->
+        </div> <!-- header content area -->
+    </header>
+    <!--====== HEADER ONE PART ENDS ======-->
+    <!--====== ABOUT THREE PART START ======-->
+    <section id="about" class="about-area pt-70 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>Java线程池深入浅出</h3> <ul> <li><a href="#ThreadPoolExecutor_4" rel="nofollow">ThreadPoolExecutor使用</a></li> <li><a href="#_11" rel="nofollow">前言</a></li> <li><a href="#_20" rel="nofollow">一、技术介绍</a></li> <li> <ul> <li><a href="#1_22" rel="nofollow">1.线程池是什么？</a></li> </ul> </li> <li><a href="#_31" rel="nofollow">二、使用步骤</a></li> <li> <ul> <li><a href="#1ThreadPoolExecutor_32" rel="nofollow">1.ThreadPoolExecutor参数介绍</a></li> <li><a href="#2newSingleThreadExecutor_52" rel="nofollow">2.newSingleThreadExecutor使用</a></li> <li><a href="#3newFixedThreadPool_103" rel="nofollow">3.newFixedThreadPool使用</a></li> <li><a href="#4newCachedThreadPool_144" rel="nofollow">4.newCachedThreadPool使用</a></li> <li><a href="#5_183" rel="nofollow">5.线程池的使用推荐</a></li> </ul> </li> <li><a href="#_197" rel="nofollow">作者寄语</a></li> </ul> </div> </h1> <p><font color="#999AAA">提示：如有疑问请私信联系、下方有源代码地址，请自行拿取</font></p> <hr color="#000000" size="1&quot;"/> </h1> <p><font color="#999AAA"> ThreadPoolExecutor是JDK1.5之后才有的线程池类，JDK帮我们实现了基于ThreadPoolExecutor创建的newSingleThreadExecutor、newFixedThreadPool、newCachedThreadPool等方便使用的线程池，那么为什么这些线程池在阿里巴巴的开发规范中却不推荐使用呢？</font> 我相信读了这篇文章后你将豁然开朗。 </p> <hr color="#000000" size="1&quot;"/> <p><font color="#999AAA">提示：以下是本篇文章正文内容，下面案例可供参考</font></p> </h1> <h2> <a id="1_22" rel="nofollow"></a>1.线程池是什么？</h2> <p><font color="#999AAA"> 线程池是一种多线程处理形式，处理过程中将任务添加到队列，然后在创建线程后自动启动这些任务。线程池线程都是后台线程。每个线程都使用默认的堆栈大小，以默认的优先级运行，并处于多线程单元中。如果某个线程在托管代码中空闲（如正在等待某个事件）,则线程池将插入另一个辅助线程来使所有处理器保持繁忙。如果所有线程池线程都始终保持繁忙，但队列中包含挂起的工作，则线程池将在一段时间后创建另一个辅助线程但线程的数目永远不会超过最大值。超过最大值的线程可以排队，但他们要等到其他线程完成后才启动。 ---摘自百度百科 </font></p> </h1> <h2> <a id="1ThreadPoolExecutor_32" rel="nofollow"></a>1.ThreadPoolExecutor参数介绍</h2> <table> <thead> <tr> <th>参数名称</th> <th>参数类型</th> <th>参数含义</th> </tr> </thead> <tbody> <tr> <td>corePoolSize</td> <td>int</td> <td>核心线程池大小</td> </tr> <tr> <td>maximumPoolSize</td> <td>int</td> <td>最大线程池大小</td> </tr> <tr> <td>keepAliveTime</td> <td>long</td> <td>线程最大空闲时间</td> </tr> <tr> <td>unit</td> <td>TimeUnit</td> <td>时间单位</td> </tr> <tr> <td>workQueue</td> <td>BlockingQueue</td> <td>线程等待队列</td> </tr> <tr> <td>threadFactory</td> <td>ThreadFactory</td> <td>线程创建工厂</td> </tr> <tr> <td>handler</td> <td>RejectedExecutionHandler</td> <td>拒绝策略</td> </tr> </tbody> </table> <p>我们看下ThreadPoolExecutor类的execute方法底层源码进行分析<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/f177fab662d3c707769aede9041ee801.jpg" alt="Java线程池深入浅出"><br /> OK，根据判断可知：</p> <p>1.如果正在运行的线程少于corePoolSize线程，请尝试使用给定命令作为其第一个任务启动一个新线程。</p> <p>2.如果任务可以成功排队，那么我们仍然需要再次检查是否应该添加线程（因为现有线程自上次检查后就死掉了），或者自进入此方法后该池已关闭。因此，我们重新检查状态，并在必要时回滚排队，如果停止，或者如果没有线程，则启动一个新线程。</p> <p>3.如果我们无法将任务排队，则尝试添加一个新线程。如果失败，我们知道我们已关闭或处于饱和状态，因此拒绝该任务。</p> <h2> <a id="2newSingleThreadExecutor_52" rel="nofollow"></a>2.newSingleThreadExecutor使用</h2> <p><font color="#999AAA">代码如下（示例）：</font></p> <pre><code class="prism language-c">	@Test     public <span class="token keyword">void</span> <span class="token function">testNewSingleThreadExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         ExecutorService threaPool <span class="token operator">=</span> Executors<span class="token punctuation">.</span><span class="token function">newSingleThreadExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">long</span> start <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"线程池执行开始"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">int</span> idx <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>         <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">--</span>idx <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             threaPool<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{<!-- --></span>                 try <span class="token punctuation">{<!-- --></span>                     LOGGER<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"线程执行中"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span> catch <span class="token punctuation">(</span>InterruptedException interruptedException<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                     interruptedException<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span>             <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         threaPool<span class="token punctuation">.</span><span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> <span class="token punctuation">;</span> <span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             <span class="token keyword">if</span> <span class="token punctuation">(</span>threaPool<span class="token punctuation">.</span><span class="token function">isTerminated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>                 <span class="token keyword">break</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token keyword">long</span> end <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"线程池执行结束，总用时："</span> <span class="token operator">+</span> <span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" ms "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token punctuation">}</span>  </code></pre> <p><font color="#999AAA">此测试方法运行的结果如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/7cd9919a37da659cf2ce894aa7c1cdbe.jpg" alt="Java线程池深入浅出">注意看我用红框标记的地方，只采用了1个线程去执行，原理是什么呢？让我们看看newSingleThreadExecutor的源码</font></p> <pre><code class="prism language-c">	public <span class="token keyword">static</span> ExecutorService <span class="token function">newSingleThreadExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">return</span> new FinalizableDelegatedExecutorService             <span class="token punctuation">(</span>new <span class="token function">ThreadPoolExecutor</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span>                                     <span class="token number">0L</span><span class="token punctuation">,</span> TimeUnit<span class="token punctuation">.</span>MILLISECONDS<span class="token punctuation">,</span>                                     new LinkedBlockingQueue<span class="token operator">&lt;</span>Runnable<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>  </code></pre> <p>构建了ThreadPoolExecutor线程池，核心线程1个，最大执行线程1个，等待队列是LinkedBlockingQueue，咱们再点进去看看LinkedBlockingQueue默认构造函数是啥<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/43c7a3e7fa19106587797192cdf5fa89.jpg" alt="Java线程池深入浅出"><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/4bdd28e778bed88cc7107e4fbea392ac.jpg" alt="Java线程池深入浅出"><br /> 可以看到这是默认时一个容量为Interger.MAX_VALUE的队列</p> <p>结论：newSingleThreadExecutor是一个核心线程为1，线程池中允许最大线程为1，等待队列为无限大的线程池，所以你应该知道为什么它只开了一个线程去执行了。</p> <h2> <a id="3newFixedThreadPool_103" rel="nofollow"></a>3.newFixedThreadPool使用</h2> <p><font color="#999AAA">代码如下（示例）：</font></p> <pre><code class="prism language-c"> 	@Test     public <span class="token keyword">void</span> <span class="token function">testNewFixedThreadPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>       	ExecutorService threaPool <span class="token operator">=</span> Executors<span class="token punctuation">.</span><span class="token function">newFixedThreadPool</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">long</span> start <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"线程池执行开始"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">int</span> idx <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>         <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">--</span>idx <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             threaPool<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{<!-- --></span>                 try <span class="token punctuation">{<!-- --></span>                     LOGGER<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"线程执行中"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span> catch <span class="token punctuation">(</span>InterruptedException interruptedException<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                     interruptedException<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span>             <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         threaPool<span class="token punctuation">.</span><span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> <span class="token punctuation">;</span> <span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             <span class="token keyword">if</span> <span class="token punctuation">(</span>threaPool<span class="token punctuation">.</span><span class="token function">isTerminated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>                 <span class="token keyword">break</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token keyword">long</span> end <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"线程池执行结束，总用时："</span> <span class="token operator">+</span> <span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" ms "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>  </code></pre> <p>先来看下执行结果</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230108/8bbb501cb941c61c6fa11350f4a1a2d4.jpg" alt="Java线程池深入浅出"><br /> OK,看下执行结果可知，只开启了5个线程,每次批量的执行5个,接下来咱们看看它的源码<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/1c2a9c54a2617aefc2ffe7a5bf888710.jpg" alt="Java线程池深入浅出"><br /> 也同样的构造了ThreadPoolExecutor线程池，参数为：核心线程数、线程池最大线程数都为传入的参数，单元测试传的是5，所以开5个线程运行，运行完重复使用这5个线程去执行队列中的。</p> <p>结论：newFixedThreadPool是一个根据传入参数来执行固定大小的线程池</p> <h2> <a id="4newCachedThreadPool_144" rel="nofollow"></a>4.newCachedThreadPool使用</h2> <p><font color="#999AAA">代码如下（示例）：</font></p> <pre><code class="prism language-c">	@Test     public <span class="token keyword">void</span> <span class="token function">testNewCachedThreadPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         ExecutorService threaPool <span class="token operator">=</span> Executors<span class="token punctuation">.</span><span class="token function">newCachedThreadPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">long</span> start <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"线程池执行开始"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">int</span> idx <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>         <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">--</span>idx <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             threaPool<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{<!-- --></span>                     LOGGER<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"线程执行中"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         threaPool<span class="token punctuation">.</span><span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> <span class="token punctuation">;</span> <span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             <span class="token keyword">if</span> <span class="token punctuation">(</span>threaPool<span class="token punctuation">.</span><span class="token function">isTerminated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>                 <span class="token keyword">break</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token keyword">long</span> end <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"线程池执行结束，总用时："</span> <span class="token operator">+</span> <span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" ms "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>  </code></pre> <p>OK，这里跟上面不同，咱们执行200个线程，咋们先看执行结果，<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/0d708c690cfd54c1e8a7a027ac5b0f8f.jpg" alt="Java线程池深入浅出"><br /> 很明显可以看到跟上面的不同，在执行时间很短的任务时重复的利用线程去执行，原因是什么呢？咱们先看源码<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/49dd1bbf7cb62ece6d59c14ef1f0771b.jpg" alt="Java线程池深入浅出"><br /> 创建了一个核心线程数为0，最大执行线程为Interger.MAX_VALUE，并且注意这里用了SynchronousQueue这个队列，SynchronousQueue没有容量，是无缓冲等待队列，是一个不存储元素的阻塞队列，会直接将任务交给消费者，必须等队列中的添加元素被消费后才能继续添加新的元素。</p> <p>SynchronousQueue，至于它的底层原理后期会写一篇专门关于队列的文章，这里不再细说</p> <p>结论：newCachedThreadPool它是一个可以无限扩大的线程池，当前没有空闲线程时它会创建一个新的线程，如果有空闲线程会使用空闲线程处理</p> <h2> <a id="5_183" rel="nofollow"></a>5.线程池的使用推荐</h2> <p>通过以上的测试案例与源码分析，相信大家对线程池有了一定的认识，总结如下：</p> <p>1.newSingleThreadExecutor：只开启一个线程运行，处理效率较慢，阻塞队列大小是没有大小限制的，如果队列堆积数据太多会造成资源消耗</p> <p>2.newFixedThreadPool：一个固定大小的线程池，可控制线程并发数量，但阻塞队列大小是没有大小限制的，如果队列堆积数据太多会造成资源消耗</p> <p>3.newCachedThreadPool：比较适合处理执行时间较短的业务，但线程若是无限制的创建，可能会导致内存占用过多而产生OOM，并且会造成cpu过度切换消耗太多资源。</p> <p><font color="#999AAA">所以使用推荐是根据业务场景实现自定义ThreadPoolExecutor，特别是高并发大流量系统，这也是为什么阿里内部不推荐使用以上几种线程池的原因。</font></p> </h1> <p><font color="#999AAA">是不是感觉很简单？更多用法请点击下方查看源码,关注我带你揭秘更多高级用法</font></p> <p>源码地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/kobeboy/hyh-boot.git"  rel="nofollow">点此查看源码</a>.</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-90628.htm">动物疫苗接种时间表（动物 疫苗）</a></p>
+                                        <p>下一个：<a href="/news/article-91109.htm">宠物粮食价格表图片高清（宠物粮食图片大全）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-7-free-v2ray-subscribe.htm" title="V2ray免费VPN机场 | 4月7日19.1M/S|免费Clash/Shadowrocket/SSR/V2ray订阅节点地址分享">V2ray免费VPN机场 | 4月7日19.1M/S|免费Clash/Shadowrocket/SSR/V2ray订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-4-free-subscribe-node.htm" title="V2ray免费VPN机场 | 4月4日19.2M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点地址分享">V2ray免费VPN机场 | 4月4日19.2M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-89856.htm" title="Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用">Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用</a></li>
+                        <li class="py-2"><a href="/news/article-86276.htm" title="解决python针对hdfs上传和下载问题">解决python针对hdfs上传和下载问题</a></li>
+                        <li class="py-2"><a href="/news/article-86278.htm" title="宠物医院美团好评200字怎么写 宠物医院美团好评200字怎么写的">宠物医院美团好评200字怎么写 宠物医院美团好评200字怎么写的</a></li>
+                        <li class="py-2"><a href="/news/article-88400.htm" title="动物疫苗检测机构电话（动物疫苗检测机构电话查询）">动物疫苗检测机构电话（动物疫苗检测机构电话查询）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-6-free-node-subscribe.htm" title="V2ray免费VPN机场 | 4月6日20.9M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享">V2ray免费VPN机场 | 4月6日20.9M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-84141.htm" title="windows kubectl安装配置">windows kubectl安装配置</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-29-free-high-speed-nodes.htm" title="V2ray免费机场 | 3月29日21.9M/S|免费SSR/Shadowrocket/Clash/V2ray订阅节点地址分享">V2ray免费机场 | 3月29日21.9M/S|免费SSR/Shadowrocket/Clash/V2ray订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-91108.htm" title="Java线程池深入浅出">Java线程池深入浅出</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- container -->
+    </section>
+    <!--====== ABOUT THREE PART ENDS ======-->
+        <!--====== FOOTER PART START ======-->
+    <footer id="footer" class="footer-area">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright text-center">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p class="text">V2ray免费机场 节点订阅中文官网 版权所有 Powered by WordPress</p>
+                        </div> <!-- copyright -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer copyright -->
+    </footer>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== jquery js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/jquery-1.12.4.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/popper.min.js"></script>
+    <!--====== Images Loaded js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/imagesloaded.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/scrolling-nav.js"></script>
+    <!--====== Slick js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/slick.min.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

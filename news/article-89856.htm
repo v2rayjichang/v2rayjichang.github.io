@@ -1,0 +1,234 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayjichang.github.io/news/article-89856.htm" />
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用</title>
+        <meta name="description" content="第一种引入方式 = import引入方式; 1.新建css 文件 src -&gt; assets -&gt; css -&gt;demo.css 2.引入 在app.vue中进入 import '." />
+        <link rel="icon" href="/assets/website/img/surfboardnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray免费机场 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayjichang.github.io/news/article-89856.htm" />
+    <meta property="og:site_name" content="V2ray免费机场 节点订阅中文官网" />
+    <meta property="og:title" content="Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用" />
+    <meta property="og:image" content="https://v2rayjichang.github.io/uploads/20240709-1/72cbe9345c1158418113b8fae7ef589c.webp" />
+        <meta property="og:release_date" content="2025-04-06T10:09:27" />
+    <meta property="og:updated_time" content="2025-04-06T10:09:27" />
+        <meta property="og:description" content="第一种引入方式 = import引入方式; 1.新建css 文件 src -&gt; assets -&gt; css -&gt;demo.css 2.引入 在app.vue中进入 import '." />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/bootstrap.min.css">
+    <!--====== Slick css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/slick.css">
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/magnific-popup.css">
+    <!--====== Line Icons css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/LineIcons.css">
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/default.css">
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMZ4WN7LCM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LMZ4WN7LCM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--====== HEADER ONE PART START ======-->
+    <header class="header-area">
+        <div class="navbar-area navbar-one navbar-transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/">
+                                        <span>
+                        V2ray免费机场                    </span>
+                                        </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarOne">
+                        <ul class="navbar-nav m-auto">
+                                                        <li class="nav-item">
+                                <a href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/client.htm">客户端</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </nav> <!-- navbar -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div>
+        <div id="home" class="header-content-area d-flex align-items-center list" style="height:450px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-wrapper">
+                            <div class="header-content">
+                                <h1 class="header-title">Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用</h1>
+                                <p class="text nav">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- header content -->
+                            <div class="header-image d-none d-lg-block">
+                                <div class="image">
+                                    <img src="/assets/website/img/surfboardnode/header.png" alt="Header">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="header-shape">
+                <img src="/assets/website/img/surfboardnode/header-shape.svg" alt="shape">
+            </div> <!-- header-shape -->
+        </div> <!-- header content area -->
+    </header>
+    <!--====== HEADER ONE PART ENDS ======-->
+    <!--====== ABOUT THREE PART START ======-->
+    <section id="about" class="about-area pt-70 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> </h1> <p><font color="#999AAA"> 第一种引入方式 = import引入方式; 1.新建css 文件 src -&gt; assets -&gt; css -&gt;demo.css 2.引入 在app.vue中进入 import './assets/css/demo.css' </font></p> <p>问题:如果引入的三方库,容易报错, 字体库冲突什么,所以不建议这么搞,自己自定义的就无所谓了;</p> <p>**</p> <h2> <a id="___link__indexhtml_15" rel="nofollow"></a>第二种 引入方式 = link 引入方式; 在index.html文件中</h2> <p>**<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230119/7d493bd18fc800bfe17c0dd8e1979e61.jpg" alt="Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用"></p> <p><font color="#999AAA"> 总结:外部css样式,自己写的可以用import引入方式(推荐),如果是引入三方的,建议使用link引入方式,会兼容一些报错 </font> </p> <hr color="#000000" size="1&quot;"/> </h1> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230119/afbeceffad53b46fb5f7ed5b238f0ef2.jpg" alt="Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用"></p> <p>如下样例：</p> <p><font color="#999AAA"> 定义混合mixin.js文件 </font> </p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230119/d2c28b5a332bf3c68a08c24c6e382bf9.jpg" alt="Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用"><br /><font color="#999AAA"><br /> 局部引入<br /></font></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230119/a5f728783881d055a6a801d8bd00cfc6.jpg" alt="Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用"></p> <p><font color="#999AAA"> 全局引入 </font> </p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230119/d32580c3f10540c67ffedc8a9db95b4b.jpg" alt="Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-89855.htm">我们如何使用MySQL SELECT语句计算表中的行数？</a></p>
+                                        <p>下一个：<a href="/news/article-90627.htm">动物疫苗贵吗现在还能打吗 动物疫苗贵吗现在还能打吗多少钱</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-86278.htm" title="宠物医院美团好评200字怎么写 宠物医院美团好评200字怎么写的">宠物医院美团好评200字怎么写 宠物医院美团好评200字怎么写的</a></li>
+                        <li class="py-2"><a href="/news/article-83404.htm" title="Spring Security核心类详解">Spring Security核心类详解</a></li>
+                        <li class="py-2"><a href="/news/article-89116.htm" title="动物疫苗价格表图片高清大全集视频（动物疫苗接种时间表）">动物疫苗价格表图片高清大全集视频（动物疫苗接种时间表）</a></li>
+                        <li class="py-2"><a href="/news/article-90628.htm" title="动物疫苗接种时间表（动物 疫苗）">动物疫苗接种时间表（动物 疫苗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-27-clash-v2ray-ss-ssr.htm" title="免费VPN翻墙推荐 | 3月27日21.7M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享">免费VPN翻墙推荐 | 3月27日21.7M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-31-free-v2ray-subscribe.htm" title="V2ray免费VPN机场 | 3月31日18M/S|免费V2ray/Clash/SSR/Shadowrocket订阅节点地址分享">V2ray免费VPN机场 | 3月31日18M/S|免费V2ray/Clash/SSR/Shadowrocket订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-83405.htm" title="宠物医院猫咪打疫苗多少钱（宠物医院给猫打的疫苗是什么）">宠物医院猫咪打疫苗多少钱（宠物医院给猫打的疫苗是什么）</a></li>
+                        <li class="py-2"><a href="/news/article-82860.htm" title="济南宠物领养中心在哪个位置（济南宠物领养济南宠物赠送）">济南宠物领养中心在哪个位置（济南宠物领养济南宠物赠送）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-clash-v2ray-ss-ssr.htm" title="V2ray免费VPN机场 | 4月2日19.1M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点地址分享">V2ray免费VPN机场 | 4月2日19.1M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-85568.htm" title="pycharm中新增less">pycharm中新增less</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- container -->
+    </section>
+    <!--====== ABOUT THREE PART ENDS ======-->
+        <!--====== FOOTER PART START ======-->
+    <footer id="footer" class="footer-area">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright text-center">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p class="text">V2ray免费机场 节点订阅中文官网 版权所有 Powered by WordPress</p>
+                        </div> <!-- copyright -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer copyright -->
+    </footer>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== jquery js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/jquery-1.12.4.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/popper.min.js"></script>
+    <!--====== Images Loaded js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/imagesloaded.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/scrolling-nav.js"></script>
+    <!--====== Slick js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/slick.min.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
