@@ -1,0 +1,234 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayjichang.github.io/news/article-93593.htm" />
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>vue组件间的传值，父传子，子传父，兄弟之间传值，跨级传值</title>
+        <meta name="description" content="文章目录    1.父传子 2.子传父 3.兄弟传值 4.跨级传值     1.父传子 在vue中可以使用props向子组件传递数据 父组件内容 &lt;template&gt;&lt;div id=" />
+        <link rel="icon" href="/assets/website/img/surfboardnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray免费机场 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayjichang.github.io/news/article-93593.htm" />
+    <meta property="og:site_name" content="V2ray免费机场 节点订阅中文官网" />
+    <meta property="og:title" content="vue组件间的传值，父传子，子传父，兄弟之间传值，跨级传值" />
+    <meta property="og:image" content="https://v2rayjichang.github.io/uploads/20240709-1/310cab61201208c0b3f68c60d4d9cf84.webp" />
+        <meta property="og:release_date" content="2025-04-11T08:58:11" />
+    <meta property="og:updated_time" content="2025-04-11T08:58:11" />
+        <meta property="og:description" content="文章目录    1.父传子 2.子传父 3.兄弟传值 4.跨级传值     1.父传子 在vue中可以使用props向子组件传递数据 父组件内容 &lt;template&gt;&lt;div id=" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue组件间的传值，父传子，子传父，兄弟之间传值，跨级传值">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/bootstrap.min.css">
+    <!--====== Slick css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/slick.css">
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/magnific-popup.css">
+    <!--====== Line Icons css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/LineIcons.css">
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/default.css">
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMZ4WN7LCM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LMZ4WN7LCM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--====== HEADER ONE PART START ======-->
+    <header class="header-area">
+        <div class="navbar-area navbar-one navbar-transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/">
+                                        <span>
+                        V2ray免费机场                    </span>
+                                        </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarOne">
+                        <ul class="navbar-nav m-auto">
+                                                        <li class="nav-item">
+                                <a href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/client.htm">客户端</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </nav> <!-- navbar -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div>
+        <div id="home" class="header-content-area d-flex align-items-center list" style="height:450px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-wrapper">
+                            <div class="header-content">
+                                <h1 class="header-title">vue组件间的传值，父传子，子传父，兄弟之间传值，跨级传值</h1>
+                                <p class="text nav">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- header content -->
+                            <div class="header-image d-none d-lg-block">
+                                <div class="image">
+                                    <img src="/assets/website/img/surfboardnode/header.png" alt="Header">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="header-shape">
+                <img src="/assets/website/img/surfboardnode/header-shape.svg" alt="shape">
+            </div> <!-- header-shape -->
+        </div> <!-- header content area -->
+    </header>
+    <!--====== HEADER ONE PART ENDS ======-->
+    <!--====== ABOUT THREE PART START ======-->
+    <section id="about" class="about-area pt-70 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>文章目录</h3> <ul> <li> <ul> <li><a href="#1_2" rel="nofollow">1.父传子</a></li> <li><a href="#2_43" rel="nofollow">2.子传父</a></li> <li><a href="#3_92" rel="nofollow">3.兄弟传值</a></li> <li><a href="#4_159" rel="nofollow">4.跨级传值</a></li> </ul> </li> </ul> </div> <h2><a id="1_2" rel="nofollow"></a>1.父传子</h2> <p>在vue中可以使用props向子组件传递数据<br /> 父组件内容</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>Child   :info<span class="token operator">=</span><span class="token string">"data"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>/Child<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/template<span class="token operator">&gt;</span></code></pre> <p>在调用组件的时候，使用 v-bind 将 info的值绑定为 App.vue 中定义的变量 data</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">import</span>  Child  from<span class="token string">"./components/child"</span><span class="token function">export</span>  default<span class="token punctuation">{<!-- --></span> 	   name:<span class="token string">"app"</span>, 		data<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 			return<span class="token punctuation">{<!-- --></span> 			    data:<span class="token string">"我是钱家寄"</span><span class="token punctuation">}</span><span class="token punctuation">}</span>, 		    components:<span class="token punctuation">{<!-- --></span>Child<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span></code></pre> <p>子组件内容<br /> 如果要从子组件中获取到父组件中的值，需在子组件中写props[“info”]</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">export</span> default<span class="token punctuation">{<!-- --></span> 		name:<span class="token string">'child'</span>, 		props:<span class="token punctuation">[</span><span class="token string">"info"</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span></code></pre> <h2><a id="2_43" rel="nofollow"></a>2.子传父</h2> <p>子组件主要通过事件传递数据给父组件<br /> 子组件内容</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"buggle"</span><span class="token operator">&gt;</span>buggle<span class="token operator">&lt;</span>/button<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span> 	 data<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 		return<span class="token punctuation">{<!-- --></span> 		  username:<span class="token string">"我是钱家寄"</span><span class="token punctuation">}</span>, 		methods:<span class="token punctuation">{<!-- --></span> 		  buggle<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 		     this.<span class="token variable">$emit</span><span class="token punctuation">(</span><span class="token string">"message"</span>,this.username<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span></code></pre> <p>父组件内容</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>Child @message<span class="token operator">=</span><span class="token string">"user"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>/Child<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">import</span> Child from<span class="token string">"./componets/child.vue"</span><span class="token function">export</span> default<span class="token punctuation">{<!-- --></span> 		data<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 			return<span class="token punctuation">{<!-- --></span>     			data:<span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span>, 		components:<span class="token punctuation">{<!-- --></span>Child<span class="token punctuation">}</span>, 		methods:<span class="token punctuation">{<!-- --></span> 			user:function<span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 				this.data<span class="token operator">=</span>val<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span></code></pre> <h2><a id="3_92" rel="nofollow"></a>3.兄弟传值</h2> <p>第一种方式：先子传父，然后再父传子，需要注意的是使用props的时候，需要在computed中使用，监听数据变化。</p> <p>第二种方式：借助中央事件总线bus.js<br /> 1.可以在assets文件夹下新建一个bus.js文件</p> <pre><code class="prism language-bash"><span class="token function">import</span> Vue from<span class="token string">'vue'</span><span class="token punctuation">;</span><span class="token function">export</span> default new Vue<span class="token punctuation">;</span></code></pre> <p>2.将2个组件做为子组件放入一个父组件中，在同一页面显示</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>b1<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/b1<span class="token operator">&gt;</span><span class="token operator">&lt;</span>b2<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/b2<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">import</span> b1 from<span class="token string">"./component/b1.vue"</span><span class="token function">import</span> b2 from<span class="token string">"./component/b2.vue"</span><span class="token function">export</span> default<span class="token punctuation">{<!-- --></span>    component:<span class="token punctuation">{<!-- --></span> 	  b1,b2<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span></code></pre> <p>3.在b1和b2组件中分别引入bus.js<br /> b1组件</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">import</span> Bus from<span class="token string">'bus.js'</span><span class="token punctuation">;</span><span class="token function">export</span> default<span class="token punctuation">{<!-- --></span>      created<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     // 在需要的传递数据的时候调用sendData方法，这里模拟调用     this.sendData<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>,   methods:<span class="token punctuation">{<!-- --></span>     sendData<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>       Bus.<span class="token variable">$emit</span><span class="token punctuation">(</span><span class="token string">'listenToA'</span>,<span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span></code></pre> <p>b2组件</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">import</span> Bus from<span class="token string">'bus.js'</span><span class="token punctuation">;</span><span class="token function">export</span> default<span class="token punctuation">{<!-- --></span>   name:<span class="token string">"b"</span>,   monted<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     Bus.<span class="token variable">$on</span><span class="token punctuation">(</span><span class="token string">'listenToA'</span>, this.getAData<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>,   methods:<span class="token punctuation">{<!-- --></span>     getAData<span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>       console.log<span class="token punctuation">(</span><span class="token variable"><span class="token variable">`</span>a组件传递过来的数据: $<span class="token punctuation">{<!-- --></span>val<span class="token punctuation">}</span><span class="token variable">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span> // hello<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span></code></pre> <h2><a id="4_159" rel="nofollow"></a>4.跨级传值</h2> <p>provider/inject<br /> 父组件：</p> <p>//父组件示例</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>childCom<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/childCom<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">import</span> childCom from<span class="token string">'../components/childCom'</span><span class="token function">export</span> default<span class="token punctuation">{<!-- --></span>     provide:<span class="token punctuation">{<!-- --></span>      //重要一步，在父组件中注入一个变量       msg:<span class="token string">"demo"</span><span class="token punctuation">}</span>,     components:<span class="token punctuation">{<!-- --></span>       childCom<span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>子组件：</p> <p>//子组件示例，这个不管嵌套了多少层，都能请求到父组件中注册的变量</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">{<!-- --></span>msg<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">export</span> default<span class="token punctuation">{<!-- --></span>     name:<span class="token string">"childCom"</span>,     inject:<span class="token punctuation">[</span><span class="token string">'msg'</span><span class="token punctuation">]</span>,//子孙组件中使用inject接住变量即可<span class="token punctuation">}</span><span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span></code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-92841.htm">开个宠物诊所需要什么资质（想开宠物诊所需要什么）</a></p>
+                                        <p>下一个：<a href="/news/article-93594.htm">开宠物店的弊端（开宠物店好不好）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-92155.htm" title="宠物免费领养平台下载安装最新版大全（宠物领养网下载）">宠物免费领养平台下载安装最新版大全（宠物领养网下载）</a></li>
+                        <li class="py-2"><a href="/news/article-84855.htm" title="2021年公务员国考报名时间（2021公务员国考报考时间）">2021年公务员国考报名时间（2021公务员国考报考时间）</a></li>
+                        <li class="py-2"><a href="/news/article-86990.htm" title="Android基础——动态加载so库">Android基础——动态加载so库</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-29-free-high-speed-nodes.htm" title="V2ray免费机场 | 3月29日21.9M/S|免费SSR/Shadowrocket/Clash/V2ray订阅节点地址分享">V2ray免费机场 | 3月29日21.9M/S|免费SSR/Shadowrocket/Clash/V2ray订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-83405.htm" title="宠物医院猫咪打疫苗多少钱（宠物医院给猫打的疫苗是什么）">宠物医院猫咪打疫苗多少钱（宠物医院给猫打的疫苗是什么）</a></li>
+                        <li class="py-2"><a href="/news/article-84141.htm" title="windows kubectl安装配置">windows kubectl安装配置</a></li>
+                        <li class="py-2"><a href="/news/article-92840.htm" title="济南 宠物领养 济南宠物领养">济南 宠物领养 济南宠物领养</a></li>
+                        <li class="py-2"><a href="/news/article-91109.htm" title="宠物粮食价格表图片高清（宠物粮食图片大全）">宠物粮食价格表图片高清（宠物粮食图片大全）</a></li>
+                        <li class="py-2"><a href="/news/article-88399.htm" title="宠物领养网站的设计与实现方案（宠物领养网站html模板）">宠物领养网站的设计与实现方案（宠物领养网站html模板）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-11-node-share.htm" title="V2ray免费VPN机场 | 4月11日19.3M/S|免费SSR/Shadowrocket/Clash/V2ray订阅节点地址分享">V2ray免费VPN机场 | 4月11日19.3M/S|免费SSR/Shadowrocket/Clash/V2ray订阅节点地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- container -->
+    </section>
+    <!--====== ABOUT THREE PART ENDS ======-->
+        <!--====== FOOTER PART START ======-->
+    <footer id="footer" class="footer-area">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright text-center">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p class="text">V2ray免费机场 节点订阅中文官网 版权所有 Powered by WordPress</p>
+                        </div> <!-- copyright -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer copyright -->
+    </footer>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== jquery js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/jquery-1.12.4.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/popper.min.js"></script>
+    <!--====== Images Loaded js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/imagesloaded.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/scrolling-nav.js"></script>
+    <!--====== Slick js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/slick.min.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
