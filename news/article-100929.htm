@@ -1,0 +1,237 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayjichang.github.io/news/article-100929.htm" />
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vue中 Vue.prototype 详解及使用</title>
+        <meta name="description" content="我们可能会在很多组件里用到数据/实用工具，但是不想污染全局作用域。这种情况下，可以通过在原型上定义它们使其在每个 Vue 的实例中可用。 1. 基本示例 在main.js中添加一个变量到 Vue.pr" />
+        <link rel="icon" href="/assets/website/img/surfboardnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray免费机场 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayjichang.github.io/news/article-100929.htm" />
+    <meta property="og:site_name" content="V2ray免费机场 节点订阅中文官网" />
+    <meta property="og:title" content="Vue中 Vue.prototype 详解及使用" />
+    <meta property="og:image" content="https://v2rayjichang.github.io/uploads/20240709-1/3835078fe1d8fc76b9fe9d6e5dc2c19f.webp" />
+        <meta property="og:release_date" content="2025-04-21T06:53:37" />
+    <meta property="og:updated_time" content="2025-04-21T06:53:37" />
+        <meta property="og:description" content="我们可能会在很多组件里用到数据/实用工具，但是不想污染全局作用域。这种情况下，可以通过在原型上定义它们使其在每个 Vue 的实例中可用。 1. 基本示例 在main.js中添加一个变量到 Vue.pr" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Vue中 Vue.prototype 详解及使用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/bootstrap.min.css">
+    <!--====== Slick css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/slick.css">
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/magnific-popup.css">
+    <!--====== Line Icons css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/LineIcons.css">
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/default.css">
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMZ4WN7LCM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LMZ4WN7LCM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--====== HEADER ONE PART START ======-->
+    <header class="header-area">
+        <div class="navbar-area navbar-one navbar-transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/">
+                                        <span>
+                        V2ray免费机场                    </span>
+                                        </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarOne">
+                        <ul class="navbar-nav m-auto">
+                                                        <li class="nav-item">
+                                <a href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/client.htm">客户端</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </nav> <!-- navbar -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div>
+        <div id="home" class="header-content-area d-flex align-items-center list" style="height:450px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-wrapper">
+                            <div class="header-content">
+                                <h1 class="header-title">Vue中 Vue.prototype 详解及使用</h1>
+                                <p class="text nav">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- header content -->
+                            <div class="header-image d-none d-lg-block">
+                                <div class="image">
+                                    <img src="/assets/website/img/surfboardnode/header.png" alt="Header">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="header-shape">
+                <img src="/assets/website/img/surfboardnode/header-shape.svg" alt="shape">
+            </div> <!-- header-shape -->
+        </div> <!-- header content area -->
+    </header>
+    <!--====== HEADER ONE PART ENDS ======-->
+    <!--====== ABOUT THREE PART START ======-->
+    <section id="about" class="about-area pt-70 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>我们可能会在很多组件里用到数据/实用工具，但是不想污染全局作用域。这种情况下，可以通过在原型上定义它们使其在每个 Vue 的实例中可用。</p> <h4><a id="1__1" rel="nofollow"></a>1. 基本示例</h4> <p>在main.js中添加一个变量到 Vue.prototype</p> <pre><code class="prism language-javascript">Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$appName<span class="token operator">=</span><span class="token string">'My App'</span></code></pre> <p>这样 $appName 就在所有的 Vue 实例中可用了，甚至在实例被创建之前就可以</p> <pre><code class="prism language-javascript"><span class="token keyword">new</span><span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>   beforeCreate<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$appName<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre> <p>控制台会打印出 My App，就这么简单！</p> <h4><a id="2_prototype_17" rel="nofollow"></a>2. 为实例prototype设置作用域</h4> <p>为什么 appName 要以 $ 开头？这很重要吗？<br /> 这里没有什么魔法。$ 是在 Vue 所有实例中都可用的 property 的一个简单约定。这样做会避免和已被定义的数据、方法、计算属性产生冲突。<br /> 如果我们设置：</p> <pre><code class="prism language-javascript">Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>appName<span class="token operator">=</span><span class="token string">'My App'</span></code></pre> <p>那么如下的代码输出什么：</p> <pre><code class="prism language-javascript"><span class="token keyword">new</span><span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>   data<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 啊哦，`appName` 也是一个我们定义的实例 property 名！</span>     appName<span class="token punctuation">:</span><span class="token string">'The name of some other app'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>   beforeCreate<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>appName<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span>   created<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>appName<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre> <p>日志中会先出现 “My App”，然后出现 “The name of some other app”，因为 this.appName 在实例被创建之后被 data 覆写了。我们通过 $ 为实例 property 设置作用域来避免这种事情发生。你还可以根据你的喜好使用自己的约定，诸如 $_appName 或 ΩappName，来避免和插件或未来的插件相冲突。</p> <h4><a id="3__42" rel="nofollow"></a>3. 注册和使用全局变量</h4> <p>每个组件都是一个vue实例，Vue.prototype加一个变量，只是给每个组件加了一个属性，这个属性的值并不具有全局性。<br /> 比如以下例子：</p> <pre><code class="prism language-javascript"><span class="token comment">// main.js</span><span class="token keyword">import</span> Vue<span class="token keyword">from</span><span class="token string">'vue'</span><span class="token keyword">import</span> App<span class="token keyword">from</span><span class="token string">'./App'</span><span class="token keyword">import</span> router<span class="token keyword">from</span><span class="token string">'./router'</span><span class="token keyword">import</span> store<span class="token keyword">from</span><span class="token string">'./store'</span>  Vue<span class="token punctuation">.</span>config<span class="token punctuation">.</span>productionTip<span class="token operator">=</span><span class="token boolean">false</span> Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$appName<span class="token operator">=</span><span class="token string">'main'</span><span class="token keyword">new</span><span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>     el<span class="token punctuation">:</span><span class="token string">'#app'</span><span class="token punctuation">,</span>     store<span class="token punctuation">,</span>     router<span class="token punctuation">,</span>     components<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span> App<span class="token punctuation">}</span><span class="token punctuation">,</span>     template<span class="token punctuation">:</span><span class="token string">'&lt;App/&gt;'</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment">// 给所有组件注册了一个属性 $appName，赋予初始值 'main' ，所有组件都可以用 this.$appName 访问此变量;</span><span class="token comment">// 如果组件中没有赋值，初始值都是'main'</span></code></pre> <pre><code class="prism language-javascript"><span class="token comment">// home.vue</span><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div @click<span class="token operator">=</span><span class="token string">"changeName"</span><span class="token operator">&gt;</span>change name<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div @click<span class="token operator">=</span><span class="token string">"gotoTest2"</span><span class="token operator">&gt;</span>goto test2<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token keyword">export</span><span class="token keyword">default</span><span class="token punctuation">{<!-- --></span>   methods<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span><span class="token function">changeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>$appName<span class="token operator">=</span><span class="token string">"test1"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">gotoTest2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/about'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span></code></pre> <pre><code class="prism language-javascript"><span class="token comment">// about.vue</span><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>$appName<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">in</span> test2<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span></code></pre> <p>点击 home 中的 change name 再跳转about，about里面还是显示 main in test2</p> <p><strong>如果要实现全局变量的功能，需要把属性变为引用类型</strong></p> <pre><code class="prism language-javascript">Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$appName<span class="token operator">=</span><span class="token punctuation">{<!-- --></span> name<span class="token punctuation">:</span><span class="token string">'main'</span><span class="token punctuation">}</span></code></pre> <p><strong>后面使用 this.$appName.name 改变和引用相应的值</strong><br /> 这进入 about 后显示 test1 in test2</p> <h4><a id="4__108" rel="nofollow"></a>4. 原型方法的上下文</h4> <p>在 JavaScript 中一个原型的方法会获得该实例的上下文,也就是说可以使用 this 访问：数据、计算属性、方法或其它任何定义在实例上的东西。<br /> 让我们将其用在一个名为 $reverseText 的方法上：</p> <pre><code class="prism language-javascript"><span class="token comment">// main.js</span> Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$reverseText</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span>propertyName<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">[</span>propertyName<span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">this</span><span class="token punctuation">[</span>propertyName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre> <pre><code class="prism language-javascript"><span class="token comment">// 相应组件</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token keyword">export</span><span class="token keyword">default</span><span class="token punctuation">{<!-- --></span><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token punctuation">{<!-- --></span>       message<span class="token punctuation">:</span><span class="token string">'Hello'</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token comment">// =&gt; "Hello"</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$reverseText</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">)</span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token comment">// =&gt; "olleH"</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span></code></pre> <h4><a id="5__140" rel="nofollow"></a>5. 应用示例</h4> <p><strong>5.1 引入 axios</strong></p> <pre><code class="prism language-javascript">npm install vue<span class="token operator">-</span>axios<span class="token operator">--</span>save  npm install qs<span class="token punctuation">.</span>js<span class="token operator">--</span>save<span class="token comment">//它的作用是能把json格式的直接转成data所需的格式</span></code></pre> <pre><code class="prism language-javascript"><span class="token comment">// mian.js</span><span class="token keyword">import</span> Vue<span class="token keyword">from</span><span class="token string">'vue'</span><span class="token keyword">import</span> axios<span class="token keyword">from</span><span class="token string">'axios'</span><span class="token keyword">import</span> qs<span class="token keyword">from</span><span class="token string">'qs'</span>  Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$axios<span class="token operator">=</span> axios<span class="token comment">//全局注册，使用方法为:this.$axios</span> Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>qs<span class="token operator">=</span> qs<span class="token comment">//全局注册，使用方法为:this.qs</span></code></pre> <pre><code class="prism language-javascript"><span class="token comment">// 相应组件</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token keyword">export</span><span class="token keyword">default</span><span class="token punctuation">{<!-- --></span><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token punctuation">{<!-- --></span>         userId<span class="token punctuation">:</span><span class="token number">666</span><span class="token punctuation">,</span>　　　　　　　　　         token<span class="token punctuation">:</span><span class="token string">''</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$axios</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>         method<span class="token punctuation">:</span><span class="token string">'post'</span><span class="token punctuation">,</span>         url<span class="token punctuation">:</span><span class="token string">'api'</span><span class="token punctuation">,</span>         data<span class="token punctuation">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>qs<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span><span class="token comment">//这里是发送给后台的数据</span>           userId<span class="token punctuation">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>userId<span class="token punctuation">,</span>           token<span class="token punctuation">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>token<span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span><span class="token comment">//这里使用了ES6的语法</span>         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token comment">//请求成功返回的数据</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token comment">//请求失败返回的数据</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span></code></pre> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-100332.htm">同城免费领养猫猫（附近领养猫的地方）</a></p>
+                                        <p>下一个：<a href="/news/article-100930.htm">动物疫苗和人体疫苗的区别是什么呢英语 动物疫苗和人体疫苗的区别是什么呢英语翻译</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-28-free-subscribe-node.htm" title="V2ray免费机场 | 3月28日23M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享">V2ray免费机场 | 3月28日23M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-83404.htm" title="Spring Security核心类详解">Spring Security核心类详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-6-free-node-subscribe.htm" title="V2ray免费VPN机场 | 4月6日20.9M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享">V2ray免费VPN机场 | 4月6日20.9M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-83405.htm" title="宠物医院猫咪打疫苗多少钱（宠物医院给猫打的疫苗是什么）">宠物医院猫咪打疫苗多少钱（宠物医院给猫打的疫苗是什么）</a></li>
+                        <li class="py-2"><a href="/news/article-96617.htm" title="开个宠物店大概需要多少钱（现在开宠物店前景好吗）">开个宠物店大概需要多少钱（现在开宠物店前景好吗）</a></li>
+                        <li class="py-2"><a href="/news/article-92155.htm" title="宠物免费领养平台下载安装最新版大全（宠物领养网下载）">宠物免费领养平台下载安装最新版大全（宠物领养网下载）</a></li>
+                        <li class="py-2"><a href="/news/article-99544.htm" title="动物医院资质要求标准（动物医院资质要求标准是多少）">动物医院资质要求标准（动物医院资质要求标准是多少）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-18-free-v2ray-subscribe.htm" title="V2ray免费VPN机场 | 4月18日20.8M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享">V2ray免费VPN机场 | 4月18日20.8M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-82859.htm" title="宠物食品工厂需要办理哪些证件（宠物食品工厂需要办理哪些证件和手续）">宠物食品工厂需要办理哪些证件（宠物食品工厂需要办理哪些证件和手续）</a></li>
+                        <li class="py-2"><a href="/news/article-100332.htm" title="同城免费领养猫猫（附近领养猫的地方）">同城免费领养猫猫（附近领养猫的地方）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">68</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- container -->
+    </section>
+    <!--====== ABOUT THREE PART ENDS ======-->
+        <!--====== FOOTER PART START ======-->
+    <footer id="footer" class="footer-area">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright text-center">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p class="text">V2ray免费机场 节点订阅中文官网 版权所有 Powered by WordPress</p>
+                        </div> <!-- copyright -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer copyright -->
+    </footer>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== jquery js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/jquery-1.12.4.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/popper.min.js"></script>
+    <!--====== Images Loaded js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/imagesloaded.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/scrolling-nav.js"></script>
+    <!--====== Slick js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/slick.min.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
