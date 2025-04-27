@@ -1,0 +1,236 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayjichang.github.io/news/article-105793.htm" />
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>浅谈Vue3中watchEffect的具体用法_vue.js</title>
+        <meta name="description" content="前言 watchEffect，它立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数。 换句话说：watchEffect相当于将watch 的依赖源和回调函数合并，当任何你有用" />
+        <link rel="icon" href="/assets/website/img/surfboardnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray免费机场 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayjichang.github.io/news/article-105793.htm" />
+    <meta property="og:site_name" content="V2ray免费机场 节点订阅中文官网" />
+    <meta property="og:title" content="浅谈Vue3中watchEffect的具体用法_vue.js" />
+    <meta property="og:image" content="https://v2rayjichang.github.io/uploads/20240709-1/94bf0254d077d3abc184d8498a37adb1.webp" />
+        <meta property="og:release_date" content="2025-04-27T08:30:38" />
+    <meta property="og:updated_time" content="2025-04-27T08:30:38" />
+        <meta property="og:description" content="前言 watchEffect，它立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数。 换句话说：watchEffect相当于将watch 的依赖源和回调函数合并，当任何你有用" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="浅谈Vue3中watchEffect的具体用法_vue.js">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/bootstrap.min.css">
+    <!--====== Slick css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/slick.css">
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/magnific-popup.css">
+    <!--====== Line Icons css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/LineIcons.css">
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/default.css">
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMZ4WN7LCM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LMZ4WN7LCM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--====== HEADER ONE PART START ======-->
+    <header class="header-area">
+        <div class="navbar-area navbar-one navbar-transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/">
+                                        <span>
+                        V2ray免费机场                    </span>
+                                        </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarOne">
+                        <ul class="navbar-nav m-auto">
+                                                        <li class="nav-item">
+                                <a href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/client.htm">客户端</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </nav> <!-- navbar -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div>
+        <div id="home" class="header-content-area d-flex align-items-center list" style="height:450px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-wrapper">
+                            <div class="header-content">
+                                <h1 class="header-title">浅谈Vue3中watchEffect的具体用法_vue.js</h1>
+                                <p class="text nav">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- header content -->
+                            <div class="header-image d-none d-lg-block">
+                                <div class="image">
+                                    <img src="/assets/website/img/surfboardnode/header.png" alt="Header">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="header-shape">
+                <img src="/assets/website/img/surfboardnode/header-shape.svg" alt="shape">
+            </div> <!-- header-shape -->
+        </div> <!-- header content area -->
+    </header>
+    <!--====== HEADER ONE PART ENDS ======-->
+    <!--====== ABOUT THREE PART START ======-->
+    <section id="about" class="about-area pt-70 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<h2>前言</h2> <p><code>watchEffect</code>，它立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数。</p> <p>换句话说：<code>watchEffect</code>相当于将<code>watch</code> 的依赖源和回调函数合并，当任何你有用到的响应式依赖更新时，该回调函数便会重新执行。不同于 <code>watch</code>，<code>watchEffect</code> 的回调函数会被立即执行（即 <code>{ immediate: true }</code>）</p> <p>此文主要讲述怎样利用<code>清除副作用</code>使我们的代码更加优雅~</p> <h2>watchEffect的副作用</h2> <p>什么是副作用（<code>side effect</code>），简单的说副作用就是执行某种操作，如对外部可变数据或变量的修改，外部接口的调用等。<code>watchEffect</code>的回调函数就是一个副作用函数，因为我们使用<code>watchEffect</code>就是侦听到依赖的变化后执行某些操作。</p> <p>当执行副作用函数时，它势必会对系统带来一些影响，如在副作用函数里执行了一个定时器<code>setInterval</code>，因此我们必须处理副作用。 <code>Vue3</code>的<code>watchEffect</code>侦听副作用传入的函数可以接收一个 <code>onInvalidate</code> 函数作为入参，用来注册清理失效时的回调。当以下情况发生时，这个失效回调会被触发：</p> <ul> <li>副作用即将重新执行时（即依赖的值改变）</li> <li>侦听器被停止 (通过显示调用返回值停止侦听，或组件被卸载时隐式调用了停止侦听)</li> </ul> <div class="ay1code"> <pre class="brush:js;">import { watchEffect, ref } from 'vue'    const count = ref(0)  watchEffect((onInvalidate) =&gt; {    console.log(count.value)    onInvalidate(() =&gt; {      console.log('执行了onInvalidate')    })  })    setTimeout(()=&gt; {    count.value++  }, 1000)</pre> </div> <p>上述代码打印的顺序为： <code>0</code> -&gt; <code>执行了onInvalidate，最后执行</code> -&gt; <code>1</code></p> <p>分析：初始化时先打印<code>count</code>的值<code>0</code>， 然后由于定时器把<code>count</code>的值更新为<code>1</code>, 此时副作用即将重新执行，因此<code>onInvalidate</code>的回调函数会被触发，打印<code>执行了onInvalidate</code>，然后执行了副作用函数，打印<code>count</code>的值<code>1</code>。</p> <div class="ay1code"> <pre class="brush:js;">import { watchEffect, ref } from 'vue'    const count = ref(0)  const stop = watchEffect((onInvalidate) =&gt; {    console.log(count.value)    onInvalidate(() =&gt; {      console.log('执行了onInvalidate')    })  })    setTimeout(()=&gt; {    stop()  }, 1000)</pre> </div> <p>上述代码：当我们显示执行<code>stop</code>函数停止侦听，此时也会触发<code>onInvalidate</code>的回调函数。同样，<code>watchEffect</code><strong>所在的组件被卸载时</strong>会隐式调用<code>stop</code>函数停止侦听，故也能触发<code>onInvalidate</code>的回调函数。</p> <h2>watchEffect的应用</h2> <p>利用<code>watchEffect</code>的非惰性执行，以及传入的<code>onInvalidate</code> 函数，我们可以做什么事情了？</p> <p><strong>场景一</strong>：平时我们定义一个定时器，或者监听某个事件，我们需要在<code>mounted</code>生命周期钩子函数内定义或者注册，然后组件销毁之前在<code>beforeUnmount</code>钩子函数里清除定时器或取消监听。这样做我们的逻辑被分散在两个生命周期，不利于维护和阅读。</p> <p>如果我利用<code>watchEffect</code>，创造和销毁逻辑放在了一起，此时代码更加优雅易读~</p> <div class="ay1code"> <pre class="brush:js;">// 定时器注册和销毁  watchEffect((onInvalidate) =&gt; {    const timer = setInterval(()=&gt; {      // ...    }, 1000)    onInvalidate(() =&gt; clearInterval(timer))  })    const handleClick = () =&gt; {   // ...  }  // dom的监听和取消监听  onMounted(()=&gt;{    watchEffect((onInvalidate) =&gt; {      document.querySelector('.btn').addEventListener('click', handleClick, false)      onInvalidate(() =&gt; document.querySelector('.btn').removeEventListener('click', handleClick))    })  })</pre> </div> <p><strong>场景二</strong>：利用watchEffect作一个防抖节流（如取消请求）</p> <div class="ay1code"> <pre class="brush:js;">const id = ref(13)  watchEffect(onInvalidate =&gt; {     // 异步请求    const token = performAsyncOperation(id.value)    // 如果id频繁改变，会触发失效函数，取消之前的接口请求    onInvalidate(() =&gt; {      // id has changed or watcher is stopped.      // invalidate previously pending async operation      token.cancel()    })  })</pre> </div> <p>......</p> <p>当然<code>watchEffect</code>还能做很多事情，比如打开一个修改的<code>modal</code>弹窗，如果检测到<code>id</code>变化，我们可以在<code>onInvalidate</code>函数内，重置初始参数...这里只是一个抛砖引玉的作用，望大家多多发掘~</p> <h2>相关阅读</h2> <p>Vue3中watch的最佳实践</p> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-105791.htm">获取网站后台权限理解</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-88399.htm" title="宠物领养网站的设计与实现方案（宠物领养网站html模板）">宠物领养网站的设计与实现方案（宠物领养网站html模板）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-16-clash-v2ray-ss-ssr.htm" title="V2ray免费VPN机场 | 4月16日22.6M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享">V2ray免费VPN机场 | 4月16日22.6M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-92155.htm" title="宠物免费领养平台下载安装最新版大全（宠物领养网下载）">宠物免费领养平台下载安装最新版大全（宠物领养网下载）</a></li>
+                        <li class="py-2"><a href="/news/article-84141.htm" title="windows kubectl安装配置">windows kubectl安装配置</a></li>
+                        <li class="py-2"><a href="/news/article-104943.htm" title="RecyclerView单层RecyclerView实现点击展开、折叠效果">RecyclerView单层RecyclerView实现点击展开、折叠效果</a></li>
+                        <li class="py-2"><a href="/news/article-96617.htm" title="开个宠物店大概需要多少钱（现在开宠物店前景好吗）">开个宠物店大概需要多少钱（现在开宠物店前景好吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-12-free-node-subscribe-links.htm" title="V2ray免费VPN机场 | 4月12日19.5M/S|免费Shadowrocket/SSR/V2ray/Clash订阅节点地址分享">V2ray免费VPN机场 | 4月12日19.5M/S|免费Shadowrocket/SSR/V2ray/Clash订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-89856.htm" title="Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用">Vue 引入外部css样式两种方式 import 和link ； mixin.js的使用</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-28-free-subscribe-node.htm" title="V2ray免费机场 | 3月28日23M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享">V2ray免费机场 | 3月28日23M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-97278.htm" title="宠物领养小程序的市场前景（宠物领养 app）">宠物领养小程序的市场前景（宠物领养 app）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">80</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- container -->
+    </section>
+    <!--====== ABOUT THREE PART ENDS ======-->
+        <!--====== FOOTER PART START ======-->
+    <footer id="footer" class="footer-area">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright text-center">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p class="text">V2ray免费机场 节点订阅中文官网 版权所有 Powered by WordPress</p>
+                        </div> <!-- copyright -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer copyright -->
+    </footer>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== jquery js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/jquery-1.12.4.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/popper.min.js"></script>
+    <!--====== Images Loaded js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/imagesloaded.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/scrolling-nav.js"></script>
+    <!--====== Slick js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/slick.min.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

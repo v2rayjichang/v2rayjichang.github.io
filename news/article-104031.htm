@@ -1,0 +1,237 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayjichang.github.io/news/article-104031.htm" />
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Idea启动Spring Boot很慢终于解决了</title>
+        <meta name="description" content="同事win10启动Spring Boot工程只要3秒左右，我的启动要30秒。开始以为是CPU差距太大，后来才觉得不是这样！ 解决方案 1. hostname命令查看自己的 hostname $ hos" />
+        <link rel="icon" href="/assets/website/img/surfboardnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray免费机场 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayjichang.github.io/news/article-104031.htm" />
+    <meta property="og:site_name" content="V2ray免费机场 节点订阅中文官网" />
+    <meta property="og:title" content="Idea启动Spring Boot很慢终于解决了" />
+    <meta property="og:image" content="https://v2rayjichang.github.io/uploads/20240709-1/96153a512a9733d15753a0bb3e328580.webp" />
+        <meta property="og:release_date" content="2025-04-25T07:09:10" />
+    <meta property="og:updated_time" content="2025-04-25T07:09:10" />
+        <meta property="og:description" content="同事win10启动Spring Boot工程只要3秒左右，我的启动要30秒。开始以为是CPU差距太大，后来才觉得不是这样！ 解决方案 1. hostname命令查看自己的 hostname $ hos" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Idea启动Spring Boot很慢终于解决了">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/bootstrap.min.css">
+    <!--====== Slick css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/slick.css">
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/magnific-popup.css">
+    <!--====== Line Icons css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/LineIcons.css">
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/default.css">
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMZ4WN7LCM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LMZ4WN7LCM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--====== HEADER ONE PART START ======-->
+    <header class="header-area">
+        <div class="navbar-area navbar-one navbar-transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/">
+                                        <span>
+                        V2ray免费机场                    </span>
+                                        </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarOne">
+                        <ul class="navbar-nav m-auto">
+                                                        <li class="nav-item">
+                                <a href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/client.htm">客户端</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </nav> <!-- navbar -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div>
+        <div id="home" class="header-content-area d-flex align-items-center list" style="height:450px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-wrapper">
+                            <div class="header-content">
+                                <h1 class="header-title">Idea启动Spring Boot很慢终于解决了</h1>
+                                <p class="text nav">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- header content -->
+                            <div class="header-image d-none d-lg-block">
+                                <div class="image">
+                                    <img src="/assets/website/img/surfboardnode/header.png" alt="Header">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="header-shape">
+                <img src="/assets/website/img/surfboardnode/header-shape.svg" alt="shape">
+            </div> <!-- header-shape -->
+        </div> <!-- header content area -->
+    </header>
+    <!--====== HEADER ONE PART ENDS ======-->
+    <!--====== ABOUT THREE PART START ======-->
+    <section id="about" class="about-area pt-70 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>同事win10启动Spring Boot工程只要3秒左右，我的启动要30秒。开始以为是CPU差距太大，后来才觉得不是这样！</p> <h2>解决方案</h2> <h3>1. hostname命令查看自己的 hostname</h3> <pre><code class="prism language-cmd">$ hostname</code></pre> <p>返回类似如下信息</p> <pre><code class="prism language-cmd">aoedeMacBook-Pro.local</code></pre> <h3>2. 修改host文件</h3> <pre><code class="prism language-cmd">sudo vim /etc/hosts</code></pre> <p>修改条目如下，注意分隔符是TAB！不是空格</p> <pre><code class="prism language-vim">127.0.0.1       localhost       aoedeMacBook-Pro.local ::1             localhost       aoedeMacBook-Pro.local</code></pre> <h3>3. 原理</h3> <p>简单说，就是spring cloud傻傻找不到路由地址，费了很多时间，配置路由地址后，它很快就能找到了</p> <h2>原文地址</h2> <ul> <li>解决 idea 运行 Spring Boot 项目启动慢的问题</li> <li>https://amsterdam.luminis.eu/2017/05/10/fixing-slow-startup-time-java-application-running-macos-sierra/ （文章已经不在了！）</li> </ul> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-104030.htm">Pytorch Conv1d()</a></p>
+                                        <p>下一个：<a href="/news/article-104943.htm">RecyclerView单层RecyclerView实现点击展开、折叠效果</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-97277.htm" title="狗咬了多久过安全期没有打针（狗咬了多久过安全期没有打针了）">狗咬了多久过安全期没有打针（狗咬了多久过安全期没有打针了）</a></li>
+                        <li class="py-2"><a href="/news/article-98092.htm" title="动物疫苗产业链（动物疫苗行业分析）">动物疫苗产业链（动物疫苗行业分析）</a></li>
+                        <li class="py-2"><a href="/news/article-88399.htm" title="宠物领养网站的设计与实现方案（宠物领养网站html模板）">宠物领养网站的设计与实现方案（宠物领养网站html模板）</a></li>
+                        <li class="py-2"><a href="/news/article-86990.htm" title="Android基础——动态加载so库">Android基础——动态加载so库</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-24-free-node-subscribe.htm" title="V2ray免费VPN机场 | 4月24日21.2M/S|免费V2ray/Clash/Shadowrocket/SSR订阅节点地址分享">V2ray免费VPN机场 | 4月24日21.2M/S|免费V2ray/Clash/Shadowrocket/SSR订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-95877.htm" title="C语言 模拟实现strlen函数详解_C 语言">C语言 模拟实现strlen函数详解_C 语言</a></li>
+                        <li class="py-2"><a href="/news/article-100930.htm" title="动物疫苗和人体疫苗的区别是什么呢英语 动物疫苗和人体疫苗的区别是什么呢英语翻译">动物疫苗和人体疫苗的区别是什么呢英语 动物疫苗和人体疫苗的区别是什么呢英语翻译</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-clash-v2ray-ss-ssr.htm" title="V2ray免费VPN机场 | 4月2日19.1M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点地址分享">V2ray免费VPN机场 | 4月2日19.1M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-102499.htm" title="宠物领养平台论文摘要写什么内容好（宠物领养系统的开题报告）">宠物领养平台论文摘要写什么内容好（宠物领养系统的开题报告）</a></li>
+                        <li class="py-2"><a href="/news/article-90628.htm" title="动物疫苗接种时间表（动物 疫苗）">动物疫苗接种时间表（动物 疫苗）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">80</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- container -->
+    </section>
+    <!--====== ABOUT THREE PART ENDS ======-->
+        <!--====== FOOTER PART START ======-->
+    <footer id="footer" class="footer-area">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright text-center">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p class="text">V2ray免费机场 节点订阅中文官网 版权所有 Powered by WordPress</p>
+                        </div> <!-- copyright -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer copyright -->
+    </footer>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== jquery js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/jquery-1.12.4.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/popper.min.js"></script>
+    <!--====== Images Loaded js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/imagesloaded.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/scrolling-nav.js"></script>
+    <!--====== Slick js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/slick.min.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

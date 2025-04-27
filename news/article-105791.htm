@@ -1,0 +1,237 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayjichang.github.io/news/article-105791.htm" />
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>获取网站后台权限理解</title>
+        <meta name="description" content="文章目录  一、后台常见位置查找   1.1 猜解常用路径 1.2 robots.txt 1.3 访问报错页面 1.4 查看图片相关属性 1.5 CMS指纹识别 1.6 利用谷歌黑语法来查找   二、" />
+        <link rel="icon" href="/assets/website/img/surfboardnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray免费机场 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayjichang.github.io/news/article-105791.htm" />
+    <meta property="og:site_name" content="V2ray免费机场 节点订阅中文官网" />
+    <meta property="og:title" content="获取网站后台权限理解" />
+    <meta property="og:image" content="https://v2rayjichang.github.io/uploads/20240709-1/573e92309286b3745d1cf9a5789b9d49.webp" />
+        <meta property="og:release_date" content="2025-04-27T08:30:38" />
+    <meta property="og:updated_time" content="2025-04-27T08:30:38" />
+        <meta property="og:description" content="文章目录  一、后台常见位置查找   1.1 猜解常用路径 1.2 robots.txt 1.3 访问报错页面 1.4 查看图片相关属性 1.5 CMS指纹识别 1.6 利用谷歌黑语法来查找   二、" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="获取网站后台权限理解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/bootstrap.min.css">
+    <!--====== Slick css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/slick.css">
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/magnific-popup.css">
+    <!--====== Line Icons css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/LineIcons.css">
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/default.css">
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMZ4WN7LCM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LMZ4WN7LCM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--====== HEADER ONE PART START ======-->
+    <header class="header-area">
+        <div class="navbar-area navbar-one navbar-transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/">
+                                        <span>
+                        V2ray免费机场                    </span>
+                                        </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarOne">
+                        <ul class="navbar-nav m-auto">
+                                                        <li class="nav-item">
+                                <a href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/client.htm">客户端</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </nav> <!-- navbar -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div>
+        <div id="home" class="header-content-area d-flex align-items-center list" style="height:450px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-wrapper">
+                            <div class="header-content">
+                                <h1 class="header-title">获取网站后台权限理解</h1>
+                                <p class="text nav">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- header content -->
+                            <div class="header-image d-none d-lg-block">
+                                <div class="image">
+                                    <img src="/assets/website/img/surfboardnode/header.png" alt="Header">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="header-shape">
+                <img src="/assets/website/img/surfboardnode/header-shape.svg" alt="shape">
+            </div> <!-- header-shape -->
+        </div> <!-- header content area -->
+    </header>
+    <!--====== HEADER ONE PART ENDS ======-->
+    <!--====== ABOUT THREE PART START ======-->
+    <section id="about" class="about-area pt-70 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>文章目录</h3> <ul> <li>一、后台常见位置查找</li> <li> <ul> <li>1.1 猜解常用路径</li> <li>1.2 robots.txt</li> <li>1.3 访问报错页面</li> <li>1.4 查看图片相关属性</li> <li>1.5 CMS指纹识别</li> <li>1.6 利用谷歌黑语法来查找</li> </ul> </li> <li>二、利用工具查找</li> <li> <ul> <li>2.1 爬虫扫描</li> <li>2.2 字典爆破后台路径</li> </ul> </li> <li>2.3 端口扫描</li> </ul> </div> </h1> <h2> 1.1 猜解常用路径</h2> <ul> <li>Admin、admin_login.asp、admin_login.php部分网站默认都是admin目录后台。虽然开发人员安全意识逐渐完善，但还是有相当一部分网站管理员直接就用默认的路径。我们找后台时从常见的默认界面入手往往会有意外收获。</li> </ul> <h2> 1.2 robots.txt</h2> <ul> <li>robots.txt是一种存放于网站根目录下的ASCII编码的文本文件，它通常告诉网络搜索引擎，此网站中的哪些内容是不能被搜索引擎获取的，哪些是可以被获取的。管理员们为了让搜索引擎不要收录admin页面而在robots.txt里面做了限制规则。但是这个robots.txt页面，谁都可以看，于是我们就可以比较清楚的了解网站的结构，比如admin目录啊、include目录啊等等。</li> </ul> <h2> 1.3 访问报错页面</h2> <ul> <li>当我们正常浏览网页找不到后台时可以尝试去请求一些网站不存在的页面，让网页显示报错信息有时也能看到网站的真实路径。</li> </ul> <h2> 1.4 查看图片相关属性</h2> <ul> <li>当进入网站后，可以先随意点击下几张图片的属性，看看它们的文件路径是否可以加以利用。因为有些旧网站会直接把编辑器放在后台目录后面，所有当我们查看图片属性的时候会将网站路径上传点暴露出来。</li> </ul> <h2> 1.5 CMS指纹识别</h2> <ul> <li> <p>CMS（Content Management System），意为”内容管理系 统”。CMS只需要修改几个静态模版，就可以当成一个网站使用。可以利用在线CMS指纹识别、云悉识别等网站来进行CMS识别 。</p> </li> <li> <p>比如像dede，后台就是/dede。除此以外，还有很多开源程序，如Joomla就是/administrator，wordpress就是/wp-admin。国内的CMS通常就是/admin和/manage，要么就是/login，这样命名后台主要还是管理员登陆起来比较方便。如果你知道了这是个什么CMS，但是却不知道他的后台登陆入口，也可以去官网或者一些下载站下载源码，看看都有哪些路径。</p> </li> </ul> <h2> 1.6 利用谷歌黑语法来查找</h2> <ul> <li>Google对于搜索的关键字提供了多种语法，合理使用这些语法，将使我们得到的搜索结果更加精确。当然，Google允许用户使用这些语法的目的是为了获得更加精确的结果，但是黑客却可以利用这些语法构造出特殊的关键字，从而搜索到我们想要的关键信息。</li> </ul> <pre><code>搜索网站后台地址 site:目标网站 intitle:管理/后台/登陆/管理员 site:目标网站 inurl:login/admin/guanlidenglu site: 目标网站 intext: 管理/后台/登陆/管理员  搜索网站敏感信息 intitle:”Index of” .sh_history intitle:”index of” etc/shadow intitle:”index of” spwd  搜索网站特定文件 site:目标网站 filetype:doc site:目标网站 filetype:xls site:目标网站 filetype:pdf </code></pre> </h1> <h2> 2.1 爬虫扫描</h2> <ul> <li>利用AWVS、BurpSuite自带的爬虫功能访问网站首页从而获取网站的敏感文件敏感目录等信息。爬取网站目录原理可以这样理解:我们在首页A中存在爬取A的所有 URL链接B，C，D…接着继 续爬取B ，C， D网页中的URL链接，层层递进，直到将所有URL链接爬取完成。之后便能看到我们需要的信息。</li> </ul> <h2> 2.2 字典爆破后台路径</h2> <ul> <li>当进行完爬虫扫描后，发现目录中没有我们需要的网站后台地址。也许这后台地址并没有像我们想象中被放置链接中或者爬行深度不够等等原因。尝试用后台字典来爆破后台地址。常用的工具有dirsearch、御剑等工具。我们是否能成功跑出后台取决于字典是否足够强大。</li> </ul> </h1> <ul> <li>还有一些管理员喜欢把服务器划分在一个比较大的端口号，然后单独把网站后台地址放置其中。对于这种情况，可以通过扫描网站来获取端口信息，然后逐 一对其进行访问浏览，看看会不会后台地址被放置在某个端口。对于端口的扫描，比较推荐的是Nmap。有些比较狡猾的管理员不放心把后台地址放到当前站点页面，就喜欢把后台地址放置到子域名当中。可以通过对其子域名收集，说不定就有你想要的后台地址信息。</li> </ul> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-104946.htm">佳雯宠物医院是全国连锁吗知乎（佳雯宠物医院总部地址）</a></p>
+                                        <p>下一个：<a href="/news/article-105793.htm">浅谈Vue3中watchEffect的具体用法_vue.js</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-92840.htm" title="济南 宠物领养 济南宠物领养">济南 宠物领养 济南宠物领养</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-28-free-subscribe-node.htm" title="V2ray免费机场 | 3月28日23M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享">V2ray免费机场 | 3月28日23M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-17-clash-v2ray-ss-ssr.htm" title="V2ray免费VPN机场 | 4月17日19.6M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享">V2ray免费VPN机场 | 4月17日19.6M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-86276.htm" title="解决python针对hdfs上传和下载问题">解决python针对hdfs上传和下载问题</a></li>
+                        <li class="py-2"><a href="/news/article-88399.htm" title="宠物领养网站的设计与实现方案（宠物领养网站html模板）">宠物领养网站的设计与实现方案（宠物领养网站html模板）</a></li>
+                        <li class="py-2"><a href="/news/article-93594.htm" title="开宠物店的弊端（开宠物店好不好）">开宠物店的弊端（开宠物店好不好）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-25-free-node-subscribe.htm" title="V2ray免费VPN机场 | 4月25日18M/S|免费Shadowrocket/SSR/Clash/V2ray订阅节点地址分享">V2ray免费VPN机场 | 4月25日18M/S|免费Shadowrocket/SSR/Clash/V2ray订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-11-node-share.htm" title="V2ray免费VPN机场 | 4月11日19.3M/S|免费SSR/Shadowrocket/Clash/V2ray订阅节点地址分享">V2ray免费VPN机场 | 4月11日19.3M/S|免费SSR/Shadowrocket/Clash/V2ray订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-23-node-share-links.htm" title="V2ray免费VPN机场 | 4月23日22.1M/S|免费Shadowrocket/SSR/Clash/V2ray订阅节点地址分享">V2ray免费VPN机场 | 4月23日22.1M/S|免费Shadowrocket/SSR/Clash/V2ray订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-27-clash-v2ray-ss-ssr.htm" title="免费VPN翻墙推荐 | 3月27日21.7M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享">免费VPN翻墙推荐 | 3月27日21.7M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">80</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- container -->
+    </section>
+    <!--====== ABOUT THREE PART ENDS ======-->
+        <!--====== FOOTER PART START ======-->
+    <footer id="footer" class="footer-area">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright text-center">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p class="text">V2ray免费机场 节点订阅中文官网 版权所有 Powered by WordPress</p>
+                        </div> <!-- copyright -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer copyright -->
+    </footer>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== jquery js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/jquery-1.12.4.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/popper.min.js"></script>
+    <!--====== Images Loaded js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/imagesloaded.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/scrolling-nav.js"></script>
+    <!--====== Slick js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/slick.min.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayjichang.github.io/news/article-104943.htm" />
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RecyclerView单层RecyclerView实现点击展开、折叠效果</title>
+        <meta name="description" content="最近有RecyclerView点击展开、折叠item的需求，其中一种写法是利用两个RecyclerView实现，但这样效率不高。因此采用单层RecyclerView来实现此需求。 1 定义两个布局it" />
+        <link rel="icon" href="/assets/website/img/surfboardnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray免费机场 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayjichang.github.io/news/article-104943.htm" />
+    <meta property="og:site_name" content="V2ray免费机场 节点订阅中文官网" />
+    <meta property="og:title" content="RecyclerView单层RecyclerView实现点击展开、折叠效果" />
+    <meta property="og:image" content="https://v2rayjichang.github.io/uploads/20240709-1/64de8714b0ecb4be29bfe1a13d5db586.webp" />
+        <meta property="og:release_date" content="2025-04-26T07:40:34" />
+    <meta property="og:updated_time" content="2025-04-26T07:40:34" />
+        <meta property="og:description" content="最近有RecyclerView点击展开、折叠item的需求，其中一种写法是利用两个RecyclerView实现，但这样效率不高。因此采用单层RecyclerView来实现此需求。 1 定义两个布局it" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="RecyclerView单层RecyclerView实现点击展开、折叠效果">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/bootstrap.min.css">
+    <!--====== Slick css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/slick.css">
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/magnific-popup.css">
+    <!--====== Line Icons css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/LineIcons.css">
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/default.css">
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="/assets/website/css/surfboardnode/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMZ4WN7LCM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LMZ4WN7LCM');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--====== HEADER ONE PART START ======-->
+    <header class="header-area">
+        <div class="navbar-area navbar-one navbar-transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/">
+                                        <span>
+                        V2ray免费机场                    </span>
+                                        </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarOne">
+                        <ul class="navbar-nav m-auto">
+                                                        <li class="nav-item">
+                                <a href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a href="/client.htm">客户端</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </nav> <!-- navbar -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div>
+        <div id="home" class="header-content-area d-flex align-items-center list" style="height:450px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-wrapper">
+                            <div class="header-content">
+                                <h1 class="header-title">RecyclerView单层RecyclerView实现点击展开、折叠效果</h1>
+                                <p class="text nav">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- header content -->
+                            <div class="header-image d-none d-lg-block">
+                                <div class="image">
+                                    <img src="/assets/website/img/surfboardnode/header.png" alt="Header">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="header-shape">
+                <img src="/assets/website/img/surfboardnode/header-shape.svg" alt="shape">
+            </div> <!-- header-shape -->
+        </div> <!-- header content area -->
+    </header>
+    <!--====== HEADER ONE PART ENDS ======-->
+    <!--====== ABOUT THREE PART START ======-->
+    <section id="about" class="about-area pt-70 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220722/9be7b0dfb3be6af2eaea06d02e51c1a3.jpg" alt="RecyclerView单层RecyclerView实现点击展开、折叠效果"></p> <p>最近有RecyclerView点击展开、折叠item的需求，其中一种写法是利用两个RecyclerView实现，但这样效率不高。因此采用单层RecyclerView来实现此需求。</p> <h2>1 定义两个布局item的结构，Adapter的数据源为两种item组装成的集合</h2> <h4>1.1 子item:ChildBookItem</h4> <p>简单起见，只展示一个bookName</p> <pre><code class="prism language-java"><span class="token keyword">private</span> String bookName<span class="token punctuation">;</span></code></pre> <h4>1.2 父item:CategoryItem</h4> <pre><code class="prism language-java"><span class="token keyword">private</span><span class="token keyword">int</span> index<span class="token punctuation">;</span><span class="token keyword">private</span><span class="token keyword">boolean</span> isShow<span class="token punctuation">;</span><span class="token comment">// 展开状态</span><span class="token keyword">private</span> String categoryName<span class="token punctuation">;</span><span class="token keyword">private</span> List<span class="token generics function"><span class="token punctuation">&lt;</span>ChildBookItem<span class="token punctuation">&gt;</span></span> childBookItems<span class="token punctuation">;</span><span class="token comment">// 子item列表</span></code></pre> <blockquote> <p>index表示在item集合中此CategoryItem的位置（不算ChildBookItem的数量）；<br /> List childBookItems 是此Category在展开状态下所包含的子item集合，只用于记录对应关系，并不参与绘制UI。</p> </blockquote> <h2>2 组装数据</h2> <h4>2.1 获取数据源</h4> <pre><code class="prism language-java"><span class="token keyword">private</span> List<span class="token generics function"><span class="token punctuation">&lt;</span>BookShelf<span class="token punctuation">&gt;</span></span><span class="token function">initData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>          BookShelf bookShelf1<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">BookShelf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         bookShelf1<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"科幻类"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         String<span class="token punctuation">[</span><span class="token punctuation">]</span> books1<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{<!-- --></span><span class="token string">"三体"</span><span class="token punctuation">,</span><span class="token string">"流浪地球"</span><span class="token punctuation">,</span><span class="token string">"降临"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>         bookShelf1<span class="token punctuation">.</span><span class="token function">setBooks</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>books1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         mDatas<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>bookShelf1<span class="token punctuation">)</span><span class="token punctuation">;</span>          BookShelf bookShelf2<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">BookShelf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         bookShelf2<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"政治类"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         String<span class="token punctuation">[</span><span class="token punctuation">]</span> books2<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{<!-- --></span><span class="token string">"美国陷阱"</span><span class="token punctuation">,</span><span class="token string">"从赫鲁晓夫到普京"</span><span class="token punctuation">,</span><span class="token string">"为什么是以色列"</span><span class="token punctuation">,</span><span class="token string">"南京大屠杀"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>         bookShelf2<span class="token punctuation">.</span><span class="token function">setBooks</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>books2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         mDatas<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>bookShelf2<span class="token punctuation">)</span><span class="token punctuation">;</span>          BookShelf bookShelf3<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">BookShelf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         bookShelf3<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"文学类"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         String<span class="token punctuation">[</span><span class="token punctuation">]</span> books3<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{<!-- --></span><span class="token string">"我们仨"</span><span class="token punctuation">,</span><span class="token string">"小姨多鹤"</span><span class="token punctuation">,</span><span class="token string">"我与地坛"</span><span class="token punctuation">,</span><span class="token string">"黄金时代"</span><span class="token punctuation">,</span><span class="token string">"雪国"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>         bookShelf3<span class="token punctuation">.</span><span class="token function">setBooks</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>books3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         mDatas<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>bookShelf3<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> mDatas<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <h4>2.2 初始化组装item</h4> <p>由于初始不展示子item，所以不需要设置ChildBookItems的内容。此时定义的Adapter绑定的集合类型为Object，既包含CategoryItem，也包括ChildBookItem，所以不指定具体类型。</p> <pre><code class="prism language-java"><span class="token keyword">private</span> List<span class="token generics function"><span class="token punctuation">&lt;</span>Object<span class="token punctuation">&gt;</span></span> mList<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// item组装数据</span><span class="token keyword">private</span> List<span class="token generics function"><span class="token punctuation">&lt;</span>CategoryItem<span class="token punctuation">&gt;</span></span><span class="token function">initItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         List<span class="token generics function"><span class="token punctuation">&lt;</span>BookShelf<span class="token punctuation">&gt;</span></span> bookShelves<span class="token operator">=</span><span class="token function">initData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         List<span class="token generics function"><span class="token punctuation">&lt;</span>CategoryItem<span class="token punctuation">&gt;</span></span> items<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span> bookShelves<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             BookShelf bookShelf<span class="token operator">=</span> bookShelves<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>              CategoryItem categoryItem<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">CategoryItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             categoryItem<span class="token punctuation">.</span><span class="token function">setIndex</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>             categoryItem<span class="token punctuation">.</span><span class="token function">setShow</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             categoryItem<span class="token punctuation">.</span><span class="token function">setCategoryName</span><span class="token punctuation">(</span>bookShelf<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             categoryItem<span class="token punctuation">.</span><span class="token function">setChildBookItems</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token class-name">ArrayList</span><span class="token generics function"><span class="token punctuation">&lt;</span>ChildBookItem<span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             items<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>categoryItem<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">return</span> items<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220722/ab8e4050bc2012a18afbf4e10ac83389.jpg" alt="RecyclerView单层RecyclerView实现点击展开、折叠效果"><br /> 此时的items包含了三条数据，均为父item类型</p> <h4>2.3 根据item的不同，在Adapter中调用不同的ViewHolder</h4> <p>BookViewHolder与CategoryViewHolder均为继承BaseViewHolder的ViewHolder，可在两个文件中分别进行item相关UI展示。<br /> 下边为Adapter部分关键代码：</p> <pre><code class="prism language-java"><span class="token keyword">public</span> BaseViewHolder<span class="token function">onCreateViewHolder</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> ViewGroup viewGroup<span class="token punctuation">,</span><span class="token keyword">int</span> i<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">switch</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">case</span> TYPE_CATEGORY<span class="token operator">:</span><span class="token keyword">return</span><span class="token keyword">new</span><span class="token class-name">CategoryViewHolder</span><span class="token punctuation">(</span>LayoutInflater<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>viewGroup<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layout_category_item<span class="token punctuation">,</span> viewGroup<span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">case</span> TYPE_BOOK<span class="token operator">:</span><span class="token keyword">return</span><span class="token keyword">new</span><span class="token class-name">BookViewHolder</span><span class="token punctuation">(</span>LayoutInflater<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>viewGroup<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layout_item_book<span class="token punctuation">,</span> viewGroup<span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">default</span><span class="token operator">:</span><span class="token keyword">return</span><span class="token keyword">new</span><span class="token class-name">BaseViewHolder</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token class-name">LinearLayout</span><span class="token punctuation">(</span>viewGroup<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">bindView</span><span class="token punctuation">(</span>List list<span class="token punctuation">,</span> Object obj<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">int</span><span class="token function">getItemViewType</span><span class="token punctuation">(</span><span class="token keyword">int</span> position<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         Object obj<span class="token operator">=</span> mDatas<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>obj<span class="token keyword">instanceof</span><span class="token class-name">CategoryItem</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> TYPE_CATEGORY<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token keyword">if</span><span class="token punctuation">(</span>obj<span class="token keyword">instanceof</span><span class="token class-name">ChildBookItem</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> TYPE_BOOK<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">return</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">onBindViewHolder</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> BaseViewHolder baseViewHolder<span class="token punctuation">,</span><span class="token keyword">int</span> i<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         baseViewHolder<span class="token punctuation">.</span><span class="token function">bindView</span><span class="token punctuation">(</span>mDatas<span class="token punctuation">,</span> mDatas<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <h2>3 点击操作</h2> <h4>3.1 展开子item</h4> <blockquote> <p>mList.addAll(mSelectedPosition + 1, childBookItems)：将ChildBookItem集合加入到适配器绑定数据集合中，位置在刚刚点击的父item后一位；<br /> mSelectedPosition：为刚刚点击的父item的position；<br /> categoryItem.setChildBookItems(childBookItems)：确定父item与子item集合的对应关系，方便后边折叠item时候直接从mList中删除此集合。</p> </blockquote> <pre><code class="prism language-java"><span class="token comment">// 展开子item</span><span class="token keyword">private</span><span class="token keyword">void</span><span class="token function">addChildItems</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         List<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">&gt;</span></span> bookList<span class="token operator">=</span> mDatas<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getBooks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         List<span class="token generics function"><span class="token punctuation">&lt;</span>ChildBookItem<span class="token punctuation">&gt;</span></span> childBookItems<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span> bookList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             ChildBookItem item<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">ChildBookItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             item<span class="token punctuation">.</span><span class="token function">setBookName</span><span class="token punctuation">(</span>bookList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             childBookItems<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>         mList<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>mSelectedPosition<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> childBookItems<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 添加子item</span>         CategoryItem categoryItem<span class="token operator">=</span><span class="token punctuation">(</span>CategoryItem<span class="token punctuation">)</span> mList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>mSelectedPosition<span class="token punctuation">)</span><span class="token punctuation">;</span>         categoryItem<span class="token punctuation">.</span><span class="token function">setChildBookItems</span><span class="token punctuation">(</span>childBookItems<span class="token punctuation">)</span><span class="token punctuation">;</span>         mAdapter<span class="token punctuation">.</span><span class="token function">notifyDataSetChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p>若此时点击最后一个父item，可看到mList中前三条数据为CategoryItem类型；后五条数据为ChildBookItem类型，并与第三条CategoryItem的子item列表内容相同。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220722/40efef494c349f37c56495e550ff47a0.jpg" alt="RecyclerView单层RecyclerView实现点击展开、折叠效果"></p> <h4>3.2 折叠子item</h4> <blockquote> <p>mList.removeAll(item.getChildBookItems())： 由于之前展开item的时候已经设置好了CategoryItem与ChildBookItem之间的对应关系，所以可通过此行代码直接从mList中删除子item。</p> </blockquote> <pre><code class="prism language-java"><span class="token keyword">private</span><span class="token keyword">void</span><span class="token function">removeChildItems</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         CategoryItem item<span class="token operator">=</span><span class="token punctuation">(</span>CategoryItem<span class="token punctuation">)</span>mList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>mSelectedPosition<span class="token punctuation">)</span><span class="token punctuation">;</span>         mList<span class="token punctuation">.</span><span class="token function">removeAll</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token function">getChildBookItems</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         item<span class="token punctuation">.</span><span class="token function">setChildBookItems</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token class-name">ArrayList</span><span class="token generics function"><span class="token punctuation">&lt;</span>ChildBookItem<span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         mAdapter<span class="token punctuation">.</span><span class="token function">notifyDataSetChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <h2>4 demo下载</h2> <p>可在这里下载单层RecyclerView实现点击展开、折叠效果的demo</p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-104031.htm">Idea启动Spring Boot很慢终于解决了</a></p>
+                                        <p>下一个：<a href="/news/article-104946.htm">佳雯宠物医院是全国连锁吗知乎（佳雯宠物医院总部地址）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-90627.htm" title="动物疫苗贵吗现在还能打吗 动物疫苗贵吗现在还能打吗多少钱">动物疫苗贵吗现在还能打吗 动物疫苗贵吗现在还能打吗多少钱</a></li>
+                        <li class="py-2"><a href="/news/article-84142.htm" title="中国十大宠物粮上市公司排名 卖宠物粮食的上市公司">中国十大宠物粮上市公司排名 卖宠物粮食的上市公司</a></li>
+                        <li class="py-2"><a href="/news/article-95878.htm" title="【芜湖宠物狗|芜湖宠物狗信息】（芜湖的宠物店比较集中在哪里）">【芜湖宠物狗|芜湖宠物狗信息】（芜湖的宠物店比较集中在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-99544.htm" title="动物医院资质要求标准（动物医院资质要求标准是多少）">动物医院资质要求标准（动物医院资质要求标准是多少）</a></li>
+                        <li class="py-2"><a href="/news/article-103335.htm" title="关于动物医院的纪录片（动物医生纪录片）">关于动物医院的纪录片（动物医生纪录片）</a></li>
+                        <li class="py-2"><a href="/news/article-100930.htm" title="动物疫苗和人体疫苗的区别是什么呢英语 动物疫苗和人体疫苗的区别是什么呢英语翻译">动物疫苗和人体疫苗的区别是什么呢英语 动物疫苗和人体疫苗的区别是什么呢英语翻译</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-5-free-high-speed-nodes.htm" title="V2ray免费VPN机场 | 4月5日22.1M/S|免费V2ray/Clash/SSR/Shadowrocket订阅节点地址分享">V2ray免费VPN机场 | 4月5日22.1M/S|免费V2ray/Clash/SSR/Shadowrocket订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-100332.htm" title="同城免费领养猫猫（附近领养猫的地方）">同城免费领养猫猫（附近领养猫的地方）</a></li>
+                        <li class="py-2"><a href="/news/article-101682.htm" title="阿城区宠物医院电话 阿城区宠物医院电话号码">阿城区宠物医院电话 阿城区宠物医院电话号码</a></li>
+                        <li class="py-2"><a href="/news/article-93594.htm" title="开宠物店的弊端（开宠物店好不好）">开宠物店的弊端（开宠物店好不好）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">80</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- container -->
+    </section>
+    <!--====== ABOUT THREE PART ENDS ======-->
+        <!--====== FOOTER PART START ======-->
+    <footer id="footer" class="footer-area">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright text-center">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p class="text">V2ray免费机场 节点订阅中文官网 版权所有 Powered by WordPress</p>
+                        </div> <!-- copyright -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer copyright -->
+    </footer>
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== jquery js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/vendor/jquery-1.12.4.min.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/popper.min.js"></script>
+    <!--====== Images Loaded js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/imagesloaded.pkgd.min.js"></script>
+    <!--====== Scrolling Nav js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/surfboardnode/scrolling-nav.js"></script>
+    <!--====== Slick js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/slick.min.js"></script>
+    <!--====== Main js ======-->
+    <script src="/assets/website/js/frontend/surfboardnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
