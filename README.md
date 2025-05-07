@@ -1,4 +1,4 @@
-# V2ray免费VPN机场 | 5月2日19.3M/S|免费SSR/V2ray/Shadowrocket/Clash订阅节点地址分享  更新时间 2025-05-02 09:30:13
+# V2ray免费VPN机场 | 5月7日20.7M/S|免费Shadowrocket/V2ray/SSR/Clash订阅节点地址分享  更新时间 2025-05-07 09:04:26
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://v2rayjichang.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://v2rayjichang.github.io/uploads/2025/05/0-20250502.yaml
-- https://v2rayjichang.github.io/uploads/2025/05/1-20250502.yaml
-- https://v2rayjichang.github.io/uploads/2025/05/2-20250502.yaml
-- https://v2rayjichang.github.io/uploads/2025/05/3-20250502.yaml
-- https://v2rayjichang.github.io/uploads/2025/05/4-20250502.yaml
+- https://v2rayjichang.github.io/uploads/2025/05/0-20250507.yaml
+- https://v2rayjichang.github.io/uploads/2025/05/1-20250507.yaml
+- https://v2rayjichang.github.io/uploads/2025/05/2-20250507.yaml
+- https://v2rayjichang.github.io/uploads/2025/05/3-20250507.yaml
+- https://v2rayjichang.github.io/uploads/2025/05/4-20250507.yaml
 
 ### V2ray订阅链接
 
-- https://v2rayjichang.github.io/uploads/2025/05/0-20250502.txt
-- https://v2rayjichang.github.io/uploads/2025/05/1-20250502.txt
-- https://v2rayjichang.github.io/uploads/2025/05/2-20250502.txt
-- https://v2rayjichang.github.io/uploads/2025/05/3-20250502.txt
-- https://v2rayjichang.github.io/uploads/2025/05/4-20250502.txt
+- https://v2rayjichang.github.io/uploads/2025/05/0-20250507.txt
+- https://v2rayjichang.github.io/uploads/2025/05/1-20250507.txt
+- https://v2rayjichang.github.io/uploads/2025/05/2-20250507.txt
+- https://v2rayjichang.github.io/uploads/2025/05/3-20250507.txt
+- https://v2rayjichang.github.io/uploads/2025/05/4-20250507.txt
 
 ### Sing-box订阅链接
 
-- https://v2rayjichang.github.io/uploads/2025/05/20250502.json
+- https://v2rayjichang.github.io/uploads/2025/05/20250507.json
 
 ## 更多clash节点订阅 ：
 
