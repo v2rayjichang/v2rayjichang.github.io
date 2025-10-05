@@ -1,4 +1,4 @@
-# V2ray免费VPN机场 | 9月29日18.6M/S|免费Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点订阅节点地址分享  更新时间 2025-09-29 03:07:08
+# V2ray免费VPN机场 | 10月5日18.7M/S|免费V2ray节点/Clash节点/Singbox节点/SSR节点/Shadowrocket节点订阅节点地址分享  更新时间 2025-10-05 08:53:53
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://v2rayjichang.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://v2rayjichang.github.io/uploads/2025/09/0-20250929.yaml
-- https://v2rayjichang.github.io/uploads/2025/09/1-20250929.yaml
-- https://v2rayjichang.github.io/uploads/2025/09/2-20250929.yaml
-- https://v2rayjichang.github.io/uploads/2025/09/3-20250929.yaml
-- https://v2rayjichang.github.io/uploads/2025/09/4-20250929.yaml
+- https://v2rayjichang.github.io/uploads/2025/10/0-20251005.yaml
+- https://v2rayjichang.github.io/uploads/2025/10/1-20251005.yaml
+- https://v2rayjichang.github.io/uploads/2025/10/2-20251005.yaml
+- https://v2rayjichang.github.io/uploads/2025/10/3-20251005.yaml
+- https://v2rayjichang.github.io/uploads/2025/10/4-20251005.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://v2rayjichang.github.io/uploads/2025/09/0-20250929.txt
-- https://v2rayjichang.github.io/uploads/2025/09/1-20250929.txt
-- https://v2rayjichang.github.io/uploads/2025/09/2-20250929.txt
-- https://v2rayjichang.github.io/uploads/2025/09/3-20250929.txt
-- https://v2rayjichang.github.io/uploads/2025/09/4-20250929.txt
+- https://v2rayjichang.github.io/uploads/2025/10/0-20251005.txt
+- https://v2rayjichang.github.io/uploads/2025/10/1-20251005.txt
+- https://v2rayjichang.github.io/uploads/2025/10/2-20251005.txt
+- https://v2rayjichang.github.io/uploads/2025/10/3-20251005.txt
+- https://v2rayjichang.github.io/uploads/2025/10/4-20251005.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://v2rayjichang.github.io/uploads/2025/09/20250929.json
+- https://v2rayjichang.github.io/uploads/2025/10/20251005.json
 
 ## 更多Clash节点订阅 ：
 
