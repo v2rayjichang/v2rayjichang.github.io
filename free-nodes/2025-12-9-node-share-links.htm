@@ -164,14 +164,18 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <p style="margin-bottom:3rem;color:#999;font-style:italic;">注：跳转链接可能会 <b style="color:red;">被墙</b> ，如多次打开失败，请先使用下面不稳定免费订阅后，再尝试点击链接</p><p>&nbsp;</p><p></p><h2>订阅文件链接</h2><p>&nbsp;</p><p><strong>Clash订阅链接</strong></p><p>https://v2rayjichang.github.io/uploads/2025/12/1-20251209.yaml</p><p>https://v2rayjichang.github.io/uploads/2025/12/2-20251209.yaml</p><p>https://v2rayjichang.github.io/uploads/2025/12/3-20251209.yaml</p><p>https://v2rayjichang.github.io/uploads/2025/12/4-20251209.yaml</p><p>&nbsp;</p><p><strong>V2ray订阅链接:</strong></p><p>https://v2rayjichang.github.io/uploads/2025/12/0-20251209.txt</p><p>https://v2rayjichang.github.io/uploads/2025/12/4-20251209.txt</p><p><strong>Sing-Box订阅链接</strong></p><p>https://v2rayjichang.github.io/uploads/2025/12/20251209.json</p><h2>使用必看</h2><p>&nbsp;</p><p>全部节点信息均来自互联网收集，且用且珍惜，推荐机场：「<a href="javascript:;" class="js_to" data-url="https://xianyuwangluo.top/#/register?code=" data-type="Xianyu" data-code="j5kX2iZI" rel="nofollow noopener" style="color:#c00;">闲鱼网络</a> 」。仅针对用于学习研究的用户分享，请勿随意传播其他信息。免费节点有效时间比较短，遇到失效是正常现象。</p><h2>解密V2Ray反向操作：如何巧妙配置让网站识别真实IP的艺术</h2>  <h2>引言：隐私保护时代的逆向思维</h2>  <p>在数字隐私成为稀缺资源的今天，全球约67%的互联网用户使用各类工具隐藏IP地址（Statista 2023数据）。V2Ray作为代理技术领域的瑞士军刀，其多协议支持和动态路由能力使其成为隐私保护者的首选。但有趣的是，某些特定场景——如企业远程办公验证、地域性服务白名单访问、开发者调试等——反而需要让目标服务器识别真实IP。这种看似矛盾的"反匿名"需求，恰恰展现了V2Ray配置艺术的精妙之处。  </p>  <h2>一、V2Ray技术架构的辩证法则</h2>  <h3>1.1 核心设计哲学的双重性</h3>  <p>V2Ray的"协议即插件"架构（Protocol-as-a-Plugin）使其具备罕见的灵活性。其流量处理引擎像可编程的交通枢纽，既能实现：<br /> - <strong>匿名模式</strong>：通过VMess协议的多重加密隧道<br /> - <strong>透明模式</strong>：利用Freedom出站协议的直连特性  </p>  <p>这种设计暗合中国哲学"阴阳相生"的智慧，一套系统同时容纳两种对立功能。  </p>  <h3>1.2 流量路由的决策矩阵</h3>  <p>配置文件中的<code>routing</code>对象犹如智能交通指挥中心，通过domain/geoIP等规则实现：<br /> <code>json "routing": {   "rules": [     {       "type": "field",       "domain": ["need-real-ip.com"],       "outboundTag": "direct"     }   ] }</code><br /> 当访问特定域名时自动切换为直连，这种精准控制如同为数据包安装"红绿灯"。  </p>  <h2>二、实战：构建智能IP识别系统</h2>  <h3>2.1 环境配置的三重奏</h3>  <ol> <li><p><strong>基础安装</strong>：<br /> <code>bash bash &lt;(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)</code><br /> 现代Linux系统推荐使用Project X的安装脚本，其原子化更新机制可避免依赖冲突。  </p></li> <li><p><strong>关键配置解剖</strong>：<br /> <code>json "outbounds": [  {    "tag": "direct",    "protocol": "freedom",    "settings": {      "domainStrategy": "UseIP"  // 强制DNS解析为IP直连    }  } ]</code>  </p></li> <li><p><strong>分流策略精要</strong>：  </p>  <ul> <li>基于SNI的TLS嗅探技术识别敏感域名  </li> <li>结合IP地理位置数据库实现智能切换  </li> </ul></li> </ol>  <h3>2.2 高级技巧：条件式IP暴露</h3>  <p>通过组合规则实现动态控制：<br /> <code>json {   "type": "field",   "ip": ["10.0.0.0/8"],  // 内网流量强制直连   "outboundTag": "direct" }</code><br /> 企业用户可借此实现"外网隐匿，内网透明"的混合架构。  </p>  <h2>三、安全与性能的平衡术</h2>  <h3>3.1 风险控制矩阵</h3>  <p>| 风险类型        | 缓解措施                          | |-----------------|-----------------------------------| | DNS泄漏         | 启用DoH+本地缓存                  | | WebRTC暴露      | 浏览器级策略+流量过滤             | | 协议指纹识别    | 启用TLS1.3+混淆插件               |  </p>  <h3>3.2 性能优化基准测试</h3>  <p>在AWS t3.medium实例上测试显示：<br /> - 纯代理模式延迟增加约120ms<br /> - 直连模式吞吐量可达980Mbps（接近物理带宽极限）  </p>  <h2>四、法律与伦理的灰色地带</h2>  <p>欧盟GDPR第17条"被遗忘权"与网络安全法之间的张力，使得IP识别配置成为法律上的"两面镜"。建议企业用户：<br /> 1. 建立完善的访问日志审计系统<br /> 2. 对暴露IP的流量实施端到端加密<br /> 3. 在隐私政策中明确告知用户  </p>  <h2>结语：技术中立的辩证思考</h2>  <p>V2Ray的IP识别配置如同数字世界的"变形术"，其价值不在于技术本身，而在于使用者的目的。正如密码学家Bruce Schneier所言："隐私工具是把双刃剑，关键在于持剑者的智慧。"在隐私保护与必要披露之间找到平衡点，才是技术应用的至高境界。  </p>  <p><strong>技术点评</strong>：本文突破常规的"隐匿IP"叙事框架，独辟蹊径地挖掘V2Ray的逆向应用场景。通过：<br /> 1. 工程细节与哲学思考的穿插<br /> 2. 配置代码与理论解释的互文<br /> 3. 风险提示与解决方案的并置<br /> 构建出立体化的技术讨论空间。特别是将中国哲学的"阴阳平衡"思想融入技术解析，使硬核的代理软件配置指南升华为关于数字时代身份管理的深度思考。</p> </div>
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
-        <p>上一个：<a href="/free-nodes/2025-12-8-free-clash-subscribe.htm">V2ray免费VPN机场 | 12月8日22.7M/S|免费Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点订阅节点地址分享</a></p>
         <p>下一个：<a href="/free-nodes/2025-12-10-free-node-subscribe-links.htm">V2ray免费VPN机场 | 12月10日22.6M/S|免费SSR节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点订阅节点地址分享</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess AEAD 加密在高封锁网络中有何优势？</h5></div>
+    <div class="panel-heading"><h5>QuantumultX 支持哪些类型的重写脚本？</h5></div>
     <div class="panel-body">
-        AEAD 加密能防止流量被篡改或重放，并隐藏流量特征。在高封锁网络中，使用 AEAD 可以提高节点稳定性和长期可用性，同时确保数据安全和隐蔽性。<hr />    </div>
+        QuantumultX 支持 JavaScript 脚本，可修改请求头、响应内容、自动跳转、广告屏蔽和定制流量处理。结合策略组，可实现高度个性化的网络访问控制和优化。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何安装？</h5></div>
+    <div class="panel-body">
+        Sing-box 支持多平台，包括 Windows、Linux、macOS 和 Android。可从官方 GitHub 页面下载预编译版本或通过命令行安装。配置文件采用 JSON 格式，兼容多种协议配置。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2RayN 如何开启系统代理？</h5></div>
@@ -179,24 +183,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         打开 V2RayN 后，点击右下角托盘图标，选择“设置系统代理”或“开启全局模式”。这样系统所有网络请求都会通过代理转发。适用于浏览器、下载器等需要全局代理的场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何设置不同用户的带宽限制？</h5></div>
-    <div class="panel-body">
-        管理员可为每个用户设置独立的带宽上限和流量配额。超过配额后可自动阻断或降速，确保服务器资源合理分配，避免单个用户占用过多带宽而影响其他用户体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何检测并处理订阅中的死节点？</h5></div>
-    <div class="panel-body">
-        定期运行批量测速脚本或使用客户端内置的 url-test、health-check 功能，自动标记或移除响应超时或重连失败的节点。结合订阅更新策略可自动替换或提醒用户维护节点列表。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 支持哪些类型的重写脚本？</h5></div>
-    <div class="panel-body">
-        QuantumultX 支持 JavaScript 脚本，可修改请求头、响应内容、自动跳转、广告屏蔽和定制流量处理。结合策略组，可实现高度个性化的网络访问控制和优化。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Surfboard 策略组如何提升在线视频体验？</h5></div>
     <div class="panel-body">
         Surfboard 可通过策略组将视频流量分配到低延迟、高带宽节点，自动切换到最佳节点，减少缓冲和卡顿，提高在线视频播放的流畅性和整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何设置不同用户的带宽限制？</h5></div>
+    <div class="panel-body">
+        管理员可为每个用户设置独立的带宽上限和流量配额。超过配额后可自动阻断或降速，确保服务器资源合理分配，避免单个用户占用过多带宽而影响其他用户体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>当 V2Ray 报错 inbound 没有监听，可能是哪些配置问题？</h5></div>
@@ -209,14 +203,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         QuantumultX 支持域名、IP、端口、协议和用户自定义脚本分流。结合策略组使用，可实现精准流量控制，如广告屏蔽、视频加速和游戏优化，提高访问速度和体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 订阅被墙或无法下载如何绕过？</h5></div>
+    <div class="panel-heading"><h5>VMess AEAD 加密在高封锁网络中有何优势？</h5></div>
     <div class="panel-body">
-        若订阅源被直接屏蔽，可尝试先在境外服务器上用代理代理获取订阅并通过中转服务器公开一个新的链接；或者使用 HTTPS 与 CDN 中转、或将订阅以文件形式托管在不易被封的云存储上。<hr />    </div>
+        AEAD 加密能防止流量被篡改或重放，并隐藏流量特征。在高封锁网络中，使用 AEAD 可以提高节点稳定性和长期可用性，同时确保数据安全和隐蔽性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何安装？</h5></div>
+    <div class="panel-heading"><h5>如何检测并处理订阅中的死节点？</h5></div>
     <div class="panel-body">
-        Sing-box 支持多平台，包括 Windows、Linux、macOS 和 Android。可从官方 GitHub 页面下载预编译版本或通过命令行安装。配置文件采用 JSON 格式，兼容多种协议配置。    </div>
+        定期运行批量测速脚本或使用客户端内置的 url-test、health-check 功能，自动标记或移除响应超时或重连失败的节点。结合订阅更新策略可自动替换或提醒用户维护节点列表。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 订阅被墙或无法下载如何绕过？</h5></div>
+    <div class="panel-body">
+        若订阅源被直接屏蔽，可尝试先在境外服务器上用代理代理获取订阅并通过中转服务器公开一个新的链接；或者使用 HTTPS 与 CDN 中转、或将订阅以文件形式托管在不易被封的云存储上。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -245,16 +244,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-11-29-free-ssr-node.htm" title="V2ray免费VPN机场 | 11月29日21.7M/S|免费Clash节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点订阅节点地址分享">V2ray免费VPN机场 | 11月29日21.7M/S|免费Clash节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-13-clash-windows.htm" title="V2ray免费VPN机场 | 12月13日22.5M/S|免费Shadowrocket节点/Singbox节点/V2ray节点/Clash节点/SSR节点订阅节点地址分享">V2ray免费VPN机场 | 12月13日22.5M/S|免费Shadowrocket节点/Singbox节点/V2ray节点/Clash节点/SSR节点订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-8-free-node-subscribe-links.htm" title="V2ray免费VPN机场 | 11月8日21.4M/S|免费Shadowrocket节点/SSR节点/Clash节点/V2ray节点/Singbox节点订阅节点地址分享">V2ray免费VPN机场 | 11月8日21.4M/S|免费Shadowrocket节点/SSR节点/Clash节点/V2ray节点/Singbox节点订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-7-free-clash.htm" title="V2ray免费VPN机场 | 12月7日21.3M/S|免费Clash节点/Shadowrocket节点/Singbox节点/SSR节点/V2ray节点订阅节点地址分享">V2ray免费VPN机场 | 12月7日21.3M/S|免费Clash节点/Shadowrocket节点/Singbox节点/SSR节点/V2ray节点订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-4-free-v2ray.htm" title="V2ray免费VPN机场 | 12月4日20.3M/S|免费SSR节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点订阅节点地址分享">V2ray免费VPN机场 | 12月4日20.3M/S|免费SSR节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-2-node-share-links.htm" title="V2ray免费VPN机场 | 12月2日19.2M/S|免费Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点订阅节点地址分享">V2ray免费VPN机场 | 12月2日19.2M/S|免费Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-17-free-node-subscribe-links.htm" title="V2ray免费VPN机场 | 11月17日21.8M/S|免费Clash节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点订阅节点地址分享">V2ray免费VPN机场 | 11月17日21.8M/S|免费Clash节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-7-free-high-speed-nodes.htm" title="V2ray免费VPN机场 | 11月7日22.2M/S|免费Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点订阅节点地址分享">V2ray免费VPN机场 | 11月7日22.2M/S|免费Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-27-node-share.htm" title="V2ray免费VPN机场 | 11月27日19.4M/S|免费Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Singbox节点订阅节点地址分享">V2ray免费VPN机场 | 11月27日19.4M/S|免费Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Singbox节点订阅节点地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-26-free-node-subscribe.htm" title="V2ray免费VPN机场 | 11月26日21.7M/S|免费Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Singbox节点订阅节点地址分享">V2ray免费VPN机场 | 11月26日21.7M/S|免费Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Singbox节点订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-6-free-ssr-node.htm" title="V2ray免费VPN机场 | 1月6日20.9M/S|免费Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点订阅节点地址分享">V2ray免费VPN机场 | 1月6日20.9M/S|免费Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-4-clash-windows.htm" title="V2ray免费VPN机场 | 1月4日19.1M/S|免费V2ray节点/SSR节点/Clash节点/Singbox节点/Shadowrocket节点订阅节点地址分享">V2ray免费VPN机场 | 1月4日19.1M/S|免费V2ray节点/SSR节点/Clash节点/Singbox节点/Shadowrocket节点订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-18-shadowrocket-node.htm" title="V2ray免费VPN机场 | 12月18日19.2M/S|免费Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点订阅节点地址分享">V2ray免费VPN机场 | 12月18日19.2M/S|免费Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-16-free-ssr-node.htm" title="V2ray免费VPN机场 | 12月16日20.3M/S|免费SSR节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点订阅节点地址分享">V2ray免费VPN机场 | 12月16日20.3M/S|免费SSR节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-9-node-share-links.htm" title="V2ray免费VPN机场 | 12月9日21.7M/S|免费SSR节点/V2ray节点/Clash节点/Shadowrocket节点/Singbox节点订阅节点地址分享">V2ray免费VPN机场 | 12月9日21.7M/S|免费SSR节点/V2ray节点/Clash节点/Shadowrocket节点/Singbox节点订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-11-free-ssr-node.htm" title="V2ray免费VPN机场 | 12月11日20.8M/S|免费SSR节点/Clash节点/Shadowrocket节点/Singbox节点/V2ray节点订阅节点地址分享">V2ray免费VPN机场 | 12月11日20.8M/S|免费SSR节点/Clash节点/Shadowrocket节点/Singbox节点/V2ray节点订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-14-free-high-speed-nodes.htm" title="V2ray免费VPN机场 | 12月14日21.6M/S|免费Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点订阅节点地址分享">V2ray免费VPN机场 | 12月14日21.6M/S|免费Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-27-free-clash-subscribe.htm" title="V2ray免费VPN机场 | 12月27日20.4M/S|免费Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点订阅节点地址分享">V2ray免费VPN机场 | 12月27日20.4M/S|免费Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-3-free-v2ray-subscribe.htm" title="V2ray免费VPN机场 | 1月3日22.8M/S|免费Clash节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点订阅节点地址分享">V2ray免费VPN机场 | 1月3日22.8M/S|免费Clash节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点订阅节点地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-15-clash-v2ray-ss-ssr.htm" title="V2ray免费VPN机场 | 12月15日21.1M/S|免费SSR节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点订阅节点地址分享">V2ray免费VPN机场 | 12月15日21.1M/S|免费SSR节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点订阅节点地址分享</a></li>
                     </ul>
     </div>
 </div>
@@ -266,10 +265,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">14</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                     </ul>
     </div>
