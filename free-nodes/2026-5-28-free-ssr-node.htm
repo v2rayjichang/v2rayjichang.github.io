@@ -380,14 +380,19 @@ curl -x http://127.0.0.1:1080 www.google.com
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + Reality 模式与 TLS 模式有何不同？</h5></div>
-    <div class="panel-body">
-        Reality 模式通过伪造握手和真实网站特征提升隐蔽性，TLS 模式侧重加密和传输效率。Reality 更难被 DPI 检测，适合高封锁环境，TLS 模式在稳定性和速度上更优。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Potatso Lite 是否支持手动节点管理？</h5></div>
     <div class="panel-body">
         支持。用户可手动输入节点信息或扫描二维码导入节点，并可进行修改或删除。虽然不支持自动订阅更新，但足以满足轻量用户对节点管理和流量分流的需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Shadowrocket 可以在哪些平台使用？</h5></div>
+    <div class="panel-body">
+        Shadowrocket 是一款 iOS 平台专用代理客户端，支持多种协议如 Vmess、Shadowsocks、Trojan 等。用户可通过导入订阅链接快速配置节点，配合规则分流功能实现精准网络代理。由于其强大功能，它是 iPhone 用户常用的科学上网工具。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS + Reality 模式与 TLS 模式有何不同？</h5></div>
+    <div class="panel-body">
+        Reality 模式通过伪造握手和真实网站特征提升隐蔽性，TLS 模式侧重加密和传输效率。Reality 更难被 DPI 检测，适合高封锁环境，TLS 模式在稳定性和速度上更优。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 是否支持多配置文件切换？</h5></div>
@@ -395,19 +400,9 @@ curl -x http://127.0.0.1:1080 www.google.com
         支持。Nekobox 允许用户创建多个配置文件并快速切换，适合在不同网络环境下使用不同规则。例如家用网络与移动数据可使用独立的配置方案。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray QUIC 模式在高丢包网络的优势？</h5></div>
+    <div class="panel-heading"><h5>Surfboard 的配置文件可以与 Clash 通用吗？</h5></div>
     <div class="panel-body">
-        QUIC 基于 UDP 支持多路复用和零握手，减少延迟和丢包。适合视频、游戏和即时通讯流量，保证高丢包环境下网络稳定性和访问速度，提高整体体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 的 JSON 配置文件常见语法错误如何快速定位？</h5></div>
-    <div class="panel-body">
-        通过 JSON 校验工具或编辑器（例如 VSCode）打开配置文件，查看语法高亮与错误提示；也可运行 sing-box 并观察控制台错误信息，错误通常会指出第几行或哪个字段不合法以便修正。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess 节点使用 AEAD 加密有何优势？</h5></div>
-    <div class="panel-body">
-        AEAD 加密能提供更强的安全性和抗重放能力，同时减少加密头泄露特征。相比普通加密，更适合高封锁环境，兼顾安全与性能，保证长期稳定使用。<hr />    </div>
+        Surfboard 基于 Clash 核心，因此支持大部分 YAML 配置文件，但部分字段如 rule-provider、external-controller 等可能不兼容。建议使用订阅转换工具将 Clash 文件转换为 Surfboard 兼容格式导入。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Potatso Lite 可以管理多少个节点？</h5></div>
@@ -415,9 +410,9 @@ curl -x http://127.0.0.1:1080 www.google.com
         Potatso Lite 可以管理数十个节点，适合轻量用户使用。虽然不支持批量自动更新，但可以手动添加和删除节点，结合策略组实现基本分流和管理功能。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 的配置文件可以与 Clash 通用吗？</h5></div>
+    <div class="panel-heading"><h5>Sing-box 的 JSON 配置文件常见语法错误如何快速定位？</h5></div>
     <div class="panel-body">
-        Surfboard 基于 Clash 核心，因此支持大部分 YAML 配置文件，但部分字段如 rule-provider、external-controller 等可能不兼容。建议使用订阅转换工具将 Clash 文件转换为 Surfboard 兼容格式导入。<hr />    </div>
+        通过 JSON 校验工具或编辑器（例如 VSCode）打开配置文件，查看语法高亮与错误提示；也可运行 sing-box 并观察控制台错误信息，错误通常会指出第几行或哪个字段不合法以便修正。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>PassWall2 能运行在哪些设备上？</h5></div>
@@ -425,9 +420,14 @@ curl -x http://127.0.0.1:1080 www.google.com
         PassWall2 是基于 OpenWRT 的插件，只要路由器支持该固件，就能安装运行。常见型号如小米路由、斐讯、软路由都可以使用，通过 Web 界面操作，适合家庭网络使用场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 可以在哪些平台使用？</h5></div>
+    <div class="panel-heading"><h5>VMess 节点使用 AEAD 加密有何优势？</h5></div>
     <div class="panel-body">
-        Shadowrocket 是一款 iOS 平台专用代理客户端，支持多种协议如 Vmess、Shadowsocks、Trojan 等。用户可通过导入订阅链接快速配置节点，配合规则分流功能实现精准网络代理。由于其强大功能，它是 iPhone 用户常用的科学上网工具。    </div>
+        AEAD 加密能提供更强的安全性和抗重放能力，同时减少加密头泄露特征。相比普通加密，更适合高封锁环境，兼顾安全与性能，保证长期稳定使用。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray QUIC 模式在高丢包网络的优势？</h5></div>
+    <div class="panel-body">
+        QUIC 基于 UDP 支持多路复用和零握手，减少延迟和丢包。适合视频、游戏和即时通讯流量，保证高丢包环境下网络稳定性和访问速度，提高整体体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -477,16 +477,16 @@ curl -x http://127.0.0.1:1080 www.google.com
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-5-4-clash-windows.htm" title="V2ray免费VPN机场 | 5月4日22M/S|免费Clash节点/Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点订阅节点地址分享">V2ray免费VPN机场 | 5月4日22M/S|免费Clash节点/Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点订阅节点地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-14-free-ssr-subscribe.htm" title="V2ray免费VPN机场 | 5月14日21.6M/S|免费Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点/Clash节点订阅节点地址分享">V2ray免费VPN机场 | 5月14日21.6M/S|免费Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点/Clash节点订阅节点地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-28-free-ssr-node.htm" title="V2ray免费VPN机场 | 5月28日19.6M/S|免费Clash节点/Singbox节点/Shadowrocket节点/SSR节点/Trojan节点/V2ray节点订阅节点地址分享">V2ray免费VPN机场 | 5月28日19.6M/S|免费Clash节点/Singbox节点/Shadowrocket节点/SSR节点/Trojan节点/V2ray节点订阅节点地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-13-free-clash.htm" title="V2ray免费VPN机场 | 5月13日19.9M/S|免费Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点订阅节点地址分享">V2ray免费VPN机场 | 5月13日19.9M/S|免费Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点订阅节点地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-22-free-shadowrocket-node.htm" title="V2ray免费VPN机场 | 5月22日19.4M/S|免费Trojan节点/Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点订阅节点地址分享">V2ray免费VPN机场 | 5月22日19.4M/S|免费Trojan节点/Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点订阅节点地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-17-clash-v2ray-ss-ssr.htm" title="V2ray免费VPN机场 | 5月17日22.3M/S|免费V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点/Trojan节点订阅节点地址分享">V2ray免费VPN机场 | 5月17日22.3M/S|免费V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点/Trojan节点订阅节点地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-11-free-clash-subscribe.htm" title="V2ray免费VPN机场 | 5月11日21.6M/S|免费Trojan节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点/Singbox节点订阅节点地址分享">V2ray免费VPN机场 | 5月11日21.6M/S|免费Trojan节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点/Singbox节点订阅节点地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-18-free-v2ray.htm" title="V2ray免费VPN机场 | 5月18日19.8M/S|免费Shadowrocket节点/SSR节点/Singbox节点/Clash节点/V2ray节点/Trojan节点订阅节点地址分享">V2ray免费VPN机场 | 5月18日19.8M/S|免费Shadowrocket节点/SSR节点/Singbox节点/Clash节点/V2ray节点/Trojan节点订阅节点地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-8-clash-node-daily-updates.htm" title="V2ray免费VPN机场 | 5月8日18.9M/S|免费SSR节点/V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点订阅节点地址分享">V2ray免费VPN机场 | 5月8日18.9M/S|免费SSR节点/V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点订阅节点地址分享</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-5-20-node-share-links.htm" title="V2ray免费VPN机场 | 5月20日18.6M/S|免费SSR节点/Trojan节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点订阅节点地址分享">V2ray免费VPN机场 | 5月20日18.6M/S|免费SSR节点/Trojan节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点订阅节点地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-30-node-share.htm" title="V2ray免费VPN机场 | 5月30日19.9M/S|免费Singbox节点/Clash节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点订阅节点地址分享">V2ray免费VPN机场 | 5月30日19.9M/S|免费Singbox节点/Clash节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点订阅节点地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-12-free-v2ray-subscribe.htm" title="V2ray免费VPN机场 | 5月12日22.5M/S|免费Clash节点/Shadowrocket节点/SSR节点/Trojan节点/V2ray节点/Singbox节点订阅节点地址分享">V2ray免费VPN机场 | 5月12日22.5M/S|免费Clash节点/Shadowrocket节点/SSR节点/Trojan节点/V2ray节点/Singbox节点订阅节点地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-11-free-clash-subscribe.htm" title="V2ray免费VPN机场 | 5月11日21.6M/S|免费Trojan节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点/Singbox节点订阅节点地址分享">V2ray免费VPN机场 | 5月11日21.6M/S|免费Trojan节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点/Singbox节点订阅节点地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-6-6-free-clash-subscribe.htm" title="V2ray免费VPN机场 | 6月6日21.8M/S|免费V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Singbox节点/Clash节点订阅节点地址分享">V2ray免费VPN机场 | 6月6日21.8M/S|免费V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Singbox节点/Clash节点订阅节点地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-13-free-clash.htm" title="V2ray免费VPN机场 | 5月13日19.9M/S|免费Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点订阅节点地址分享">V2ray免费VPN机场 | 5月13日19.9M/S|免费Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点订阅节点地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-19-free-ssr-node.htm" title="V2ray免费VPN机场 | 5月19日22.8M/S|免费Trojan节点/SSR节点/V2ray节点/Singbox节点/Shadowrocket节点/Clash节点订阅节点地址分享">V2ray免费VPN机场 | 5月19日22.8M/S|免费Trojan节点/SSR节点/V2ray节点/Singbox节点/Shadowrocket节点/Clash节点订阅节点地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-15-shadowrocket-node.htm" title="V2ray免费VPN机场 | 5月15日18.4M/S|免费Singbox节点/Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Trojan节点订阅节点地址分享">V2ray免费VPN机场 | 5月15日18.4M/S|免费Singbox节点/Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Trojan节点订阅节点地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-29-clash-windows.htm" title="V2ray免费VPN机场 | 5月29日19.7M/S|免费Singbox节点/Clash节点/Shadowrocket节点/V2ray节点/SSR节点/Trojan节点订阅节点地址分享">V2ray免费VPN机场 | 5月29日19.7M/S|免费Singbox节点/Clash节点/Shadowrocket节点/V2ray节点/SSR节点/Trojan节点订阅节点地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-10-free-clash.htm" title="V2ray免费VPN机场 | 5月10日18.8M/S|免费Clash节点/V2ray节点/SSR节点/Trojan节点/Shadowrocket节点/Singbox节点订阅节点地址分享">V2ray免费VPN机场 | 5月10日18.8M/S|免费Clash节点/V2ray节点/SSR节点/Trojan节点/Shadowrocket节点/Singbox节点订阅节点地址分享</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -498,7 +498,7 @@ curl -x http://127.0.0.1:1080 www.google.com
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">5</span> <a href="/date/2026-06/" title="2026-06 归档">2026-06</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2026-06/" title="2026-06 归档">2026-06</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
